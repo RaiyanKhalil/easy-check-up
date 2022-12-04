@@ -19,6 +19,14 @@ class AppointmentsController extends Controller{
         Appointment::destroy($id);        
         return redirect('/dashboard');
     }
+
+    public function new($id){
+        $viewData = array();
+        // $doctor = Doctor::findorFail($id);
+        $viewData['doctor_id'] = $id;
+        $viewData['doctor'] = "";
+        return view('appointments.new')->with('viewData', $viewData);
+    }
     
     public function create(Request $req){
         // $request->validate([
@@ -36,6 +44,22 @@ class AppointmentsController extends Controller{
         $appt['status_id'] = 0;
         $appt['created_at'] = Carbon::now();
         $appt['updated_at'] = Carbon::now();
+        $appt->save();
+
+        // return view('appt')->with('appt', $appt);
+        return back();
+    }
+
+    public function cancel($id){
+        // $startDateTime =  $req->appointment_date .' ' .$req->appointment_time; 
+        $appt = Appointment::findorFail($id);
+        // $appt['user_id'] = 1;
+        // $appt['doctor_id'] = $req->doctor_id;
+        // $appt['datetime_start'] = $startDateTime;
+        // $appt['datetime_end'] =  Carbon::parse($startDateTime)->addHour();
+        $appt['status_id'] = -1;
+        // $appt['created_at'] = Carbon::now();
+        // $appt['updated_at'] = Carbon::now();
         $appt->save();
 
         // return view('appt')->with('appt', $appt);

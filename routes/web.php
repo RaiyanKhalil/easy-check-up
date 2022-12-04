@@ -25,7 +25,9 @@ Auth::routes();
 // APPOINTMENTS
 Route::get('/dashboard', 'App\Http\Controllers\DashboardController@patientDash')->name('dashboard-patient');
 Route::get('/dashboard-doctor', 'App\Http\Controllers\DashboardController@docDash')->name('dashboard-doctor');
-Route::post('/appointment/create','App\Http\Controllers\AppointmentsController@create');
-Route::get('/appointment/delete/{id}', 'App\Http\Controllers\AppointmentsController@delete');
+Route::post('/appointment/create','App\Http\Controllers\AppointmentsController@create')->name('appointment-create');
+Route::get('/appointment/new/{id}','App\Http\Controllers\AppointmentsController@new')->name('appointment-new');
+Route::get('/appointment/delete/{id}', 'App\Http\Controllers\AppointmentsController@delete')->name('appointment-delete');
+Route::get('/appointment/cancel/{id}', 'App\Http\Controllers\AppointmentsController@cancel')->name('appointment-cancel');
 
 

@@ -1,9 +1,8 @@
 
-
 <table class="table">
     <tr>
         <th>
-            ID
+            Booking ID
         </th>
         @if ($isDoctor)
             <th>
@@ -60,7 +59,7 @@
             <a href={{'/appointment/delete/' . $a->id}}>Edit</a> fixme
         </td>
         <td>
-            <a href={{'/appointment/delete/' . $a->id}}>Delete</a>
+            <a href={{ route('appointment-cancel', $a->id)  }}>Cancel</a>
         </td>
     </tr>
 @endforeach

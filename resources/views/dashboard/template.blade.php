@@ -1,8 +1,7 @@
 @php
     $user = $viewData['user'];
     $isDoctor = $user->role_id == 1;
-    $roleStr = $isDoctor ? 'doctor' : 'patient';
-
+    // $roleStr = $isDoctor ? 'doctor' : 'patient';
 @endphp
 
 @include('layouts.header')
@@ -35,7 +34,7 @@
             {{-- <h3>
                 Create Appointment
             </h3> --}}
-            {{-- @include('appointments.create') --}}
+            @include('appointments.create')
             <div class="mb-7">
                 <h3>Your Appointments</h3>
                 @include('appointments.table', ['appts'=>$viewData['appointments'], 'user' => $user, 'isDoctor' => $isDoctor] )

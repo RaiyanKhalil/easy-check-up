@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\CustomHomeController@getAllDoctors')
-->name('landing');
+Route::get('/', 'App\Http\Controllers\CustomHomeController@getSearch')->name('landing');
 Route::get('/home', 'App\Http\Controllers\CustomHomeController@getAllDoctors')->name('landing');
+
+Route::get('/search', 'App\Http\Controllers\CustomHomeController@getSearch');
 
 // ROUTES
 Auth::routes();

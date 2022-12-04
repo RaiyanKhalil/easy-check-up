@@ -13,9 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\CustomHomeController@getSearch')->name('landing');
-Route::get('/home', 'App\Http\Controllers\CustomHomeController@getSearch');
-Route::get('/search', 'App\Http\Controllers\CustomHomeController@getSearch');
+Route::get('/', 'App\Http\Controllers\CustomHomeController@getDefaultData')->name('landing');
+Route::get('/home', 'App\Http\Controllers\CustomHomeController@getDefaultData')->name('landing');
+Route::get('/home/search', 'App\Http\Controllers\CustomHomeController@search')->name('search');
+// Route::get('/search', 'App\Http\Controllers\CustomHomeController@showEmployee')->name('search');
+
+
+
+
 
 // ROUTES
 Auth::routes();

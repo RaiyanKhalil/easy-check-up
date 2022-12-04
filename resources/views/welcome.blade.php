@@ -9,17 +9,13 @@ if(Auth::user()) $isDoctor = Auth::user()->role_id == 2;
 
 <div class="container-fluid" style="width: 70%;">
 
-    <form >
-    <input
-        type="search"
-        class="form-control"
-        placeholder="Find user here"
-        name="search"
-        value="{{ request('search') }}"
-        onkeyup="myFunction()"
-    >
+    <form action="{{ route('search') }}" method="GET">
+        <input type="text" name="search" value="{{ request('search') }}" />
+        <button type="submit">Search</button>
     </form>
     
+
+
     <div class="row">
         @forelse($users as $d)
             <div class="col" style="margin-bottom: 22px;">
@@ -47,6 +43,7 @@ if(Auth::user()) $isDoctor = Auth::user()->role_id == 2;
         @endforelse
     </div>
 </div>
+
 @endsection
 @extends('layouts.footer')
 

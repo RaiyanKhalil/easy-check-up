@@ -18,24 +18,6 @@ if(Auth::user()) $isDoctor = Auth::user()->role_id == 2;
         value="{{ request('search') }}"
     >
     </form>
-
-{{-- 
-                    <h5 class="card-title">Dr. {{ $d->f_name . ' ' . $d->l_name}}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">MBBS in {{ $d->doc_type}}</h6>
-                    <p class="card-text">Number: {{ $d->phn_num}} <br> Email: {{ $d->email}} <br> Clinic Address: {{ $d->doc_office_location}}</p>
-                    @if(isset($d->id))
-                        @auth
-                            @if(!$isDoctor)
-                            <a href="{{route('appointment-new', $d->id)}}" class="card-link">Book Appointment</a>    
-                            @endif
-                        @endauth
-                        @guest
-                        <a href="{{route('login', $d->id)}}" class="card-link">Login to book</a>    
-                        @endguest
-                    @endif
-
-                     --}}
-
     
     <div class="row">
         @forelse($users as $d)
@@ -46,9 +28,15 @@ if(Auth::user()) $isDoctor = Auth::user()->role_id == 2;
                         <h6 class="card-subtitle mb-2 text-muted">MBBS in {{ $d->doc_type}}</h6>
                         <p class="card-text">Number: {{ $d->phn_num}} <br> Email: {{ $d->email}} <br> Clinic Address: {{ $d->doc_office_location}}</p>
                         @if(isset($d->id))
-                            <a href="{{route('appointment-new', $d->id)}}" class="card-link">Book Appointment</a>
-                            <a href="#" class="card-link">Another link</a> 
-                        @endif
+                        @auth
+                            @if(!$isDoctor)
+                            <a href="{{route('appointment-new', $d->id)}}" class="card-link">Book Appointment</a>    
+                            @endif
+                        @endauth
+                        @guest
+                        <a href="{{route('login', $d->id)}}" class="card-link">Login to book</a>    
+                        @endguest
+                    @endif
                         
                     </div>
                 </div>

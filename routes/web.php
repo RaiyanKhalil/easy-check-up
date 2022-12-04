@@ -22,6 +22,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // ROUTES
 Auth::routes();
 
+//Registration Routes
+
+Route::get('/registration-doctor/{id}', 'App\Http\Controllers\Auth\RegisterController@showDoctorRegisterPage')->name('register-doctor');
+Route::get('/registration-user/{id}', 'App\Http\Controllers\Auth\RegisterController@showUserRegisterPage')->name('register-user');
+
 // APPOINTMENTS
 Route::get('/dashboard', 'App\Http\Controllers\DashboardController@patientDash')->name('dashboard-patient');
 Route::get('/dashboard-doctor', 'App\Http\Controllers\DashboardController@docDash')->name('dashboard-doctor');

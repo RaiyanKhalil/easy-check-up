@@ -1,3 +1,7 @@
+
+@php                            
+    $idvalue =$viewData['id']   ;                   
+@endphp
 @extends('layouts.app')
 @section('content')
 <div class="container">
@@ -10,6 +14,7 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="row mb-3">
+                            
                             <label for="fname" class="col-md-4 col-form-label text-md-end">First Name</label>
 
                             <div class="col-md-6">
@@ -47,24 +52,56 @@
                                 <input id="contact" type="text" class="form-control " name="contact" value="{{ old('contact') }}" required autocomplete="contact" autofocus>
 
                             </div>
-                                                </div>
+                        </div>
 
-                                                <div class="row mb-3">
+                        @if( $idvalue == 2 )
+                        <div class="row mb-3">
+                            <label for="doctor_type_l" class="col-md-4 col-form-label text-md-end">Doctor Type</label>
+
+                            <div class="dropdown col-md-6">
+                                <select id="doctor_type" name="doctor_type" class="form-select" aria-label="Default select example">
+                                    <option selected>Please select a type</option>
+                                    <option value="doctor1">Doctor1</option>
+                                    <option value="doctor1">Doctor2</option>
+                                    <option value="doctor2">Doctor3</option>
+                                    <option value="doctor3">Doctor4</option>
+                                    <option value="doctor4">Doctor5</option>
+                                    <option value="doctor5">Doctor6</option>
+                                </select>
+                            </div>
+
+                            </div>  
+                        </div>
+                        <div class="row mb-3">
+                            <label for="address" class="col-md-4 col-form-label text-md-end">Clinic Address</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
+                                <input type="hidden" id="userId" class="form-control" name="userId" value="{{$idvalue}}">
+                            </div>
+                        </div>
+                        @endif
+                        
+                        
+                        @if( $idvalue == 1 )
+                        <div class="row mb-3">
                             <label for="address" class="col-md-4 col-form-label text-md-end">Address</label>
 
                             <div class="col-md-6">
                                 <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
-
+                                <input type="hidden" id="userId" class="form-control" name="userId" value="{{$idvalue}}">
                             </div>
-
+                            </div>
+                            @endif
+                            
     <!--                    <div class="row justify-content-center">
                             <div class="col-md-4">
                                 <label for="address" class="col-md-4 col-form-label text-md-end">Address</label>
                                 <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
                             </div>
 -->
-                        </div>
-
+                        
+                       
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>

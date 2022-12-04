@@ -1,20 +1,23 @@
-@extends('layouts.header')
 
+@extends('layouts.header')
 @section('content')
-<div class="container-fluid">
-<div class="container text-center">
-    <div class="row align-items-start">
-      @for ($i = 0; $i <= 10; $i++    )
-      <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-    @endfor
-</div>
+
+<div class="container-fluid" style="width: 70%;">
+    <div class="row">
+        @foreach($docData as $d)
+        <div class="col" style="margin-bottom: 22px;">
+            <div class="card" style="width: 22rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Dr. {{ $d->f_name . ' ' . $d->l_name}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">MBBS in {{ $d->type}}</h6>
+                    <p class="card-text">Number: {{ $d->phn_num}} <br> Email: {{ $d->email_address}} <br> Clinic Address: {{ $d->doc_office_location}}</p>
+                    <a href="#" class="card-link">Book Appointment</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
 </div>
 @endsection
 @extends('layouts.footer')

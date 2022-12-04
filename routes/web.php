@@ -13,10 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// HOME
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// ROUTES
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// APPOINTMENTS
+Route::get('/dashboard', 'App\Http\Controllers\DashboardController@patientDash')->name('dashboard-patient');
+Route::get('/dashboard-doctor', 'App\Http\Controllers\DashboardController@docDash')->name('dashboard-doctor');
+Route::post('/appointment/create','App\Http\Controllers\AppointmentsController@create');
+Route::get('/appointment/delete/{id}', 'App\Http\Controllers\AppointmentsController@delete');
+
+

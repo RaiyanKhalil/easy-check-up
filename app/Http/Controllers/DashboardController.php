@@ -33,9 +33,12 @@ class DashboardController extends Controller
         
         $viewData = array();
         $viewData['user'] = Auth::user();
-        $viewData['doctor'] = Doctor::findorFail(Auth::user()->id);
+        // $viewData['doctor'] = Doctor::findorFail(Auth::user()->id);
 
-        $doc = DB::table('doctors')->where('email', Auth::user()->email)->first();
+        // $doc = DB::table('doctors')->where('email', Auth::user()->email)->first();
+        $doc = Doctor::query()->where('email', Auth::user()->email)->first();
+        // var_dump($doc);
+        $viewData['doctor'] = (object) $doc;
 
         $myAppts = DB::table('appointments')->where('doctor_id', $doc->id)->get();
         $appts = array();

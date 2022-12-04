@@ -20,8 +20,6 @@ Route::get('/home/search', 'App\Http\Controllers\CustomHomeController@search')->
 
 
 
-
-
 // ROUTES
 Auth::routes();
 
@@ -45,6 +43,7 @@ Route::get('/appointment/approve/{id}', 'App\Http\Controllers\AppointmentsContro
 Route::get('/doctor/{id}', 'App\Http\Controllers\DoctorController@showDoctor')->name('doctor-edit');
 Route::Post('/doctor/update/{id}', 'App\Http\Controllers\DoctorController@update')->name('doctor-update');
 Route::get('/doctor/{id}/delete', 'App\Http\Controllers\AppointmentsController@cancel')->name('doctor-cancel');
+
 
 
 //LOCATION

@@ -98,11 +98,11 @@ class RegisterController extends Controller
         $viewData['specialties'] = array(
             'Surgery',
             'Internal medicine',
-            'Dermatology',
+            'Cardiology',
             'Family medicine',
             'Emergency medicine',
             'Pediatrics',
-            'Otorhinolaryngology',
+            'Audiology',
             'Orthopedics',
             'Neurosurgery',
         );

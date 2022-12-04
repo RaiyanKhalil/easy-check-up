@@ -14,14 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'App\Http\Controllers\CustomHomeController@getSearch')->name('landing');
-// Route::get('/search={$data}', 'App\Http\Controllers\CustomHomeController@getSearchAjax')->name('search');
-
-// Route::get('/search', 'App\Http\Controllers\CustomHomeController@getSearch');
+Route::get('/home', 'App\Http\Controllers\CustomHomeController@getSearch');
+Route::get('/search', 'App\Http\Controllers\CustomHomeController@getSearch');
 
 // ROUTES
 Auth::routes();
 
-//Registration Routes
+//REGISTRATION
 
 Route::get('/registration-doctor/{id}', 'App\Http\Controllers\Auth\RegisterController@showDoctorRegisterPage')->name('register-doctor');
 Route::get('/registration-user/{id}', 'App\Http\Controllers\Auth\RegisterController@showUserRegisterPage')->name('register-user');
@@ -35,3 +34,9 @@ Route::get('/appointment/delete/{id}', 'App\Http\Controllers\AppointmentsControl
 Route::get('/appointment/cancel/{id}', 'App\Http\Controllers\AppointmentsController@cancel')->name('appointment-cancel');
 
 
+//DOCTORS
+Route::get('/doctor/{id}', 'App\Http\Controllers\DoctorController@showDoctor')->name('doctor-edit');
+
+Route::Post('/doctor/update/{id}', 'App\Http\Controllers\DoctorController@update')->name('doctor-update');
+
+Route::get('/doctor/{id}/delete', 'App\Http\Controllers\AppointmentsController@cancel')->name('doctor-cancel');

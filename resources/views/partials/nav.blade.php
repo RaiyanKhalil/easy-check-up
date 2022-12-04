@@ -31,12 +31,14 @@
                         @endif --}}
 
                         
+                        
 
                     @else {{-- IF AUTHORIZED --}}
-                        @if(Auth::user()->role_type  == 'doctor')
+                        @if(Auth::user()->role_id  == 2)
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('dashboard-doctor') }}">Doctor Dashboard</a>
                                 </li>
+                                
                         @else
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('dashboard-patient') }}">Patient Dashboard</a>
@@ -45,7 +47,7 @@
                         
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
+                                {{ Auth::user()->fname }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

@@ -1,7 +1,4 @@
 
-@php                            
-    $idvalue =$viewData['id']   ;                   
-@endphp
 @extends('layouts.app')
 @section('content')
 <div class="container">

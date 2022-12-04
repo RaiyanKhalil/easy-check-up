@@ -31,20 +31,12 @@
                     </li>
                 </ul>
             </div>
-            {{-- <h3>
-                Create Appointment
-            </h3> --}}
-            @include('appointments.create')
             <div class="mb-7">
                 <h3>Your Appointments</h3>
-                @include('appointments.table', ['appts'=>$viewData['appointments'], 'user' => $user, 'isDoctor' => $isDoctor] )
+                @include('appointments.table', ['appts'=>$viewDat ['appointments'], 'user' => $user, 'isDoctor' => $isDoctor] )
             </div>
         </div>
     </div>
 </div>
-
-
-
-
 
 @include('layouts.footer')

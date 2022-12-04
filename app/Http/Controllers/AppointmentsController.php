@@ -4,7 +4,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Appointment;
 use Carbon\Carbon;
-// use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use GuzzleHttp\Promise\Utils;
+use Illuminate\Support\Facades\Auth;
+
+// use Illuminate\Support\Facades\Http;
+// $response = Http::get('http://192.168.0.62:1337/api/doctors');
+// $foo =  json_decode($response->body())->data[0];
+// $viewData['res'] = $foo->attributes->f_name;
+
 
 class AppointmentsController extends Controller{
     public function listAll(){
@@ -22,22 +29,18 @@ class AppointmentsController extends Controller{
 
     public function new($id){
         $viewData = array();
-        // $doctor = Doctor::findorFail($id);
+
+        $viewData['user_id'] = Auth::user()->id;
         $viewData['doctor_id'] = $id;
         $viewData['doctor'] = "";
+        
         return view('appointments.new')->with('viewData', $viewData);
     }
     
     public function create(Request $req){
-        // $request->validate([
-        //     'stock_name'=>'required',
-        //     'ticket'=>'required',
-        //     'value'=>'required|max:10|regex:/^-?[0-9]+(?:\.[0-9]{1,2})?$/'
-        // ]); 
-        // Getting values from the blade template form
         $startDateTime =  $req->appointment_date .' ' .$req->appointment_time; 
         $appt = new Appointment;
-        $appt['user_id'] = 1;
+        $appt['user_id'] = $req->user_id;
         $appt['doctor_id'] = $req->doctor_id;
         $appt['datetime_start'] = $startDateTime;
         $appt['datetime_end'] =  Carbon::parse($startDateTime)->addHour();
@@ -47,22 +50,19 @@ class AppointmentsController extends Controller{
         $appt->save();
 
         // return view('appt')->with('appt', $appt);
-        return back();
+        if(Auth::user()->role_id == 1 ){
+            return redirect('/dashboard');
+        }else{
+            return redirect('/dashboard');
+        }
+        
     }
 
     public function cancel($id){
         // $startDateTime =  $req->appointment_date .' ' .$req->appointment_time; 
         $appt = Appointment::findorFail($id);
-        // $appt['user_id'] = 1;
-        // $appt['doctor_id'] = $req->doctor_id;
-        // $appt['datetime_start'] = $startDateTime;
-        // $appt['datetime_end'] =  Carbon::parse($startDateTime)->addHour();
         $appt['status_id'] = -1;
-        // $appt['created_at'] = Carbon::now();
-        // $appt['updated_at'] = Carbon::now();
         $appt->save();
-
-        // return view('appt')->with('appt', $appt);
         return back();
     }
 

@@ -1,12 +1,8 @@
-@php
-$doctorId = 1;
-if(isset($_GET['doctor_id'])){ 
-    $doctorId = $_GET['doctor_id']; 
-};
-@endphp
+
 
 <form action="/appointment/create" method="POST">
     @csrf
+    <input type="hidden" name="user_id" value={{$viewData['user_id']}}>
     <input type="date" name="appointment_date" value=""/>
     <select name="appointment_time">
         <option value="09:00:00">
@@ -19,7 +15,7 @@ if(isset($_GET['doctor_id'])){
             11:00am - 12:00nn
         </option>
     </select>
-    <input class="d-none" name="doctor_id" type="number" value={{$doctorId}}>
+    <input class="d-none" name="doctor_id" type="number" value={{$viewData['doctor_id']}}>
 
     <button type="submit">Book Appointment</button>
 </form>

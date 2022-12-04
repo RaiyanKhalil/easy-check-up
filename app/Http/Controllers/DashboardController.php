@@ -22,12 +22,9 @@ class DashboardController extends Controller
         foreach ($myAppts as $a) {
             $doctor = Doctor::findorFail($a->doctor_id);
             $a->doctor = $doctor;
-            // array_push($appts,$a)
             $appts[] = $a;
         }
         $viewData['appointments'] = $appts;
-
-
         return view('dashboard.template')->with('viewData', $viewData);
     }
 
@@ -36,6 +33,7 @@ class DashboardController extends Controller
         
         $viewData = array();
         $viewData['user'] = Auth::user();
+        $viewData['doctor'] = Doctor::findorFail(Auth::user()->id);
 
         $doc = DB::table('doctors')->where('email', Auth::user()->email)->first();
 
@@ -47,7 +45,6 @@ class DashboardController extends Controller
             $appts[] = $a;
         }
         $viewData['appointments'] = $appts;
-
 
         return view('dashboard.template')->with('viewData', $viewData);
     }

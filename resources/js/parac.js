@@ -14,3 +14,5 @@ var card = `
 document.querySelector('.container-fluid').insertAdjacentHTML('beforeend', ()=>{
 
 })
+
+document.querySelector('.form-control').addEventListener('')

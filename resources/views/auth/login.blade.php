@@ -79,8 +79,8 @@
                         <hr style="height:2px;border-width:0;color:gray;background-color:gray">
                         <h5> No Account yet?</h5>
                         <div class="row mb-2">
-                            <a type="button" class="btn btn-primary mb-2" href="{{ route('register') }}">Register as Patient</a>
-                            <a type="button" class="btn btn-primary mb-2" href="{{ route('register') }}">Register as Doctor</a>
+                            <a type="button" class="btn btn-primary mb-2" href="{{ route('register-user',1) }}">Register as Patient</a>
+                            <a type="button" class="btn btn-primary mb-2" href="{{ route('register-doctor',2) }}">Register as Doctor</a>
                         </div>
                     </form>
                 </div>

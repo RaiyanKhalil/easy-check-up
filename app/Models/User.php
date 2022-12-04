@@ -25,7 +25,16 @@ class User extends Authenticatable
         'contact',
         'address',
         'email',
+        'role_id',
         'password',
+        
+        'f_name',
+        'l_name',
+        'doc_type',
+        'phn_num',
+        'doc_office_location',
+        'doc_lat',
+        'doc_long'
 
     ];
 

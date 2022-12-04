@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Doctor;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -65,13 +66,53 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+
+
+        var_dump($data);
+
+
+        
+
+        if($data['userId']==2)
+        {
+        Doctor::create([
+            'f_name' => $data['fname'],
+            'l_name' => $data['lname'],
+            'email' => $data['email'],
+            'phn_num' => $data['contact'],
+            'doc_type' => $data['doctor_type'],
+            'doc_office_location' => $data['address'],
+            'doc_lat' => '',
+            'doc_long' => '',
+        ]);
+            } 
+          return User::create([
             'fname' => $data['fname'],
             'lname' => $data['lname'],
             'email' => $data['email'],
             'contact' => $data['contact'],
+            'role_id' => $data['userId'],
             'address' => $data['address'],
             'password' => Hash::make($data['password']),
-        ]);
+        ]);    
+    
     }
+
+    protected function showDoctorRegisterPage($id)
+    {
+        $viewData = array();
+        $viewData["id"] = $id;
+
+        return view('auth.register') -> with("viewData",$viewData);
+    }
+
+    protected function showUserRegisterPage($id)
+    {
+        $viewData = array();
+        $viewData["id"] = $id;
+
+
+        return view('auth.register') -> with("viewData",$viewData);
+    }
+    
 }

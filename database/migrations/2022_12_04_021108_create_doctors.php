@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('external_docs');
+        Schema::dropIfExists('doctors');
     }
 };

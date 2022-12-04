@@ -73,7 +73,7 @@ class RegisterController extends Controller
         
         $longLat = array();
         $longLat = LocationController::getLongLat($data['address']);
-
+        var_dump($longLat);
         Doctor::create([
             'f_name' => $data['fname'],
             'l_name' => $data['lname'],
@@ -81,8 +81,8 @@ class RegisterController extends Controller
             'phn_num' => $data['contact'],
             'doc_type' => $data['doctor_type'],
             'doc_office_location' => $data['address'],
-            'doc_lat' => $longLat['latitude'],
-            'doc_long' => $longLat['longitude'],
+            'doc_lat' => $longLat[0],
+            'doc_long' => $longLat[1],
         ]);
             } 
           return User::create([

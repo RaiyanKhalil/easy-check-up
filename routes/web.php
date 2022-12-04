@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'App\Http\Controllers\CustomHomeController@getSearch')->name('landing');
-// Route::get('/', 'App\Http\Controllers\CustomHomeController@getAllDoctors')->name('landing');
+// Route::get('/search={$data}', 'App\Http\Controllers\CustomHomeController@getSearchAjax')->name('search');
 
 // Route::get('/search', 'App\Http\Controllers\CustomHomeController@getSearch');
 

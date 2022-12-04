@@ -54,10 +54,8 @@ class CustomHomeController extends Controller
 
     public function getSearch()
     {
-        // echo request('search');
         if (request('search')) {
-            $docAll = Doctor::where('doc_type', 'like', '%' . request('search') . '%')->get();
-            // echo $users;
+            $docAll = Doctor::where('f_name', 'like', '%' . request('search') . '%')->get();
         } else if(request('search') == ''){
             $externalDoc = array();
             $initRes = Http::get('http://192.168.0.62:1337/api/doctors/');
@@ -71,17 +69,15 @@ class CustomHomeController extends Controller
                 }
             }
     
-    
             $internalDoc =  array();
     
             foreach (Doctor::all() as $x => $d) { 
                 $internalDoc[] = (object) $d;
             }
             $docAll=array_merge($externalDoc, $internalDoc);
-            // echo $users;
         }
     
         return view('welcome')->with('users', $docAll);
     }
-
+    
 }

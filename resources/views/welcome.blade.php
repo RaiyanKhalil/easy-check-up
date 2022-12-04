@@ -12,9 +12,11 @@
         placeholder="Find user here"
         name="search"
         value="{{ request('search') }}"
+        onkeyup="myFunction()"
     >
     </form>
 
+    
     <br>
     
     <div class="row">
@@ -37,8 +39,6 @@
             <li class="list-group-item list-group-item-danger">User Not Found.</li>
         @endforelse
     </div>
-    
-    
 </div>
 @endsection
 @extends('layouts.footer')

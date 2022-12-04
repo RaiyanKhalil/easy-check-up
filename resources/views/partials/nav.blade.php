@@ -32,12 +32,14 @@
                         @endif --}}
 
                         
+                        
 
                     @else {{-- IF AUTHORIZED --}}
                         @if(Auth::user()->role_id  == 2)
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('dashboard-doctor') }}">Doctor Dashboard</a>
                                 </li>
+                                
                         @else
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('dashboard-patient') }}">Patient Dashboard</a>

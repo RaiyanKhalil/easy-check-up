@@ -35,6 +35,7 @@ class DashboardController extends Controller
         
         $viewData = array();
         $viewData['user'] = Auth::user();
+        $viewData['doctor'] = Doctor::findorFail(Auth::user()->id);
 
         $doc = DB::table('doctors')->where('email', Auth::user()->email)->first();
 

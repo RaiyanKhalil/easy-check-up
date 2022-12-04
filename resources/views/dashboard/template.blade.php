@@ -16,20 +16,14 @@
             <div class="mb-4">
                 <h3>Your Details</h3>
                 <ul class="list-group">
-                    <li class="list-group-item">
-                        <strong class="">Name: </strong> {{$user['fname']}} {{$user['lname']}} 
-                    </li>
-                    <li class="list-group-item">
-                        <strong class="">Contact: </strong> {{$user['contact']}} 
-                    </li>
-                    <li class="list-group-item">
-                        <strong class="">Email: </strong> {{$user['email']}} 
-                    </li>
-                    <li class="list-group-item">
-                        <strong class="">Address: </strong> {{$user['address']}}
-                    </li>
+                    @include('users.details')
+                    @if($isDoctor)
+                        @include('doctor.details', ['doctor'=>$viewData['doctor']])
+                    @endif
+
                 </ul>
-                <a href="#">Edit Profile</a>
+
+                <a href="{{route('doctor-edit',Auth::user()->id)}}" class="btn btn-primary">Edit Profile</a>
             </div>
             <div class="mb-4">
                 <h3>Your Appointments</h3>

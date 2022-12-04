@@ -14,10 +14,11 @@ class DoctorController extends Controller
     {         
       //  if(!Auth::user()) return redirect()->route('login');
         
-      $doctor = Doctor::findorFail($id);
+        $doctor = Doctor::findorFail($id);
 
         $viewData = array();
         $viewData["doctor"] = $doctor;
+        var_dump($viewData["doctor"]);
 
         return view('doctor.show')
         ->with('viewData',$viewData);  

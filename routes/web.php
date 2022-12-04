@@ -13,15 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-
-Route::get('/', 'App\Http\Controllers\CustomHomeController@getExternalDoctors')->name('landing');
-
-
-Route::get('/home', 'App\Http\Controllers\CustomHomeController@getExternalDoctors')->name('landing');
+Route::get('/', 'App\Http\Controllers\CustomHomeController@getSearch')->name('landing');
+Route::get('/home', 'App\Http\Controllers\CustomHomeController@getSearch');
+Route::get('/search', 'App\Http\Controllers\CustomHomeController@getSearch');
 
 // ROUTES
 Auth::routes();

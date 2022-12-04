@@ -4,7 +4,7 @@
                     <form method="POST" action="{{ route('doctor/' . $viewData['doctor']->id .'/update }}">
                         @csrf
                         <div class="row mb-3">
-                            
+                            <h1>{{var_dump($viewData)}}</h1>
                             <label for="fname" class="col-md-4 col-form-label text-md-end">First Name</label>
 
                             <div class="col-md-6">
@@ -75,8 +75,6 @@
                                 <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
                             </div>
 -->
-                        
-                       
                         
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">

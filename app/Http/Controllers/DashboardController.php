@@ -48,7 +48,6 @@ class DashboardController extends Controller
         }
         $viewData['appointments'] = $appts;
 
-
         return view('dashboard.template')->with('viewData', $viewData);
     }
 }

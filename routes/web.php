@@ -33,6 +33,7 @@ Route::post('/appointment/create','App\Http\Controllers\AppointmentsController@c
 Route::get('/appointment/new/{id}','App\Http\Controllers\AppointmentsController@new')->name('appointment-new');
 Route::get('/appointment/delete/{id}', 'App\Http\Controllers\AppointmentsController@delete')->name('appointment-delete');
 Route::get('/appointment/cancel/{id}', 'App\Http\Controllers\AppointmentsController@cancel')->name('appointment-cancel');
+Route::get('/appointment/approve/{id}', 'App\Http\Controllers\AppointmentsController@approve')->name('appointment-approve');
 
 
 //DOCTORS

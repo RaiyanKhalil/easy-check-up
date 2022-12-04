@@ -65,7 +65,7 @@ class AppointmentsController extends Controller{
         $appt['doctor_id'] = $req->doctor_id;
         $appt['datetime_start'] = $startDateTime;
         $appt['datetime_end'] =  Carbon::parse($startDateTime)->addHour();
-        $appt['status_id'] = 0;
+        $appt['status_id'] = 1;
         $appt['created_at'] = Carbon::now();
         $appt['updated_at'] = Carbon::now();
         $appt->save();
@@ -81,9 +81,16 @@ class AppointmentsController extends Controller{
 
     public function cancel($id){
         if(!Auth::user()) return redirect('/');
-        // $startDateTime =  $req->appointment_date .' ' .$req->appointment_time; 
         $appt = Appointment::findorFail($id);
-        $appt['status_id'] = -1;
+        $appt['status_id'] = 3;
+        $appt->save();
+        return back();
+    }
+
+    public function approve($id){
+        if(!Auth::user()) return redirect('/');
+        $appt = Appointment::findorFail($id);
+        $appt['status_id'] = 2;
         $appt->save();
         return back();
     }

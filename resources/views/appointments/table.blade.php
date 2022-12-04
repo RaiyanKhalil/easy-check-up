@@ -2,7 +2,7 @@
 <table class="table">
     <tr>
         <th>
-            Booking ID
+            #
         </th>
         @if ($isDoctor)
             <th>
@@ -67,12 +67,20 @@
             @endswitch
         </td>
         <td>
-            <a class="text-warning" href={{'/appointment/delete/' . $a->id}}>Edit</a>
+            @if(!$isDoctor)
+                <a class="text-warning" href={{'/appointment/delete/' . $a->id}}>Edit</a>
+            @else
+                @if($a->status_id == 1)
+                    <a class="text-success" href={{ route('appointment-approve', $a->id)}}>Approve</a>
+                @endif
+            @endif
+
+            
         </td>
         <td>
             @if($a->status_id == 3)
                 <a class="text-danger" href={{ route('appointment-delete', $a->id)  }}>Delete</a>
-            @else
+            @elseif($a->status_id == 1)
                 <a class="text-danger" href={{ route('appointment-cancel', $a->id)  }}>Cancel</a>
             @endif
             

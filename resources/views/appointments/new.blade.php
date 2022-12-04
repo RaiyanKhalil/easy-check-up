@@ -1,3 +1,6 @@
+@php
+    $d = $viewData['doctor'];
+@endphp
 @include('layouts.header')
 
 <div class="container">
@@ -10,6 +13,19 @@
                 <h3>
                     Doctor details
                 </h3>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Dr. {{ $d->f_name . ' ' . $d->l_name}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">MBBS in {{ $d->doc_type}}</h6>
+                        <ul class="p-0">
+                            <li class="list-unstyled ml-0">Number: {{ $d->phn_num}}</li>
+                            <li class="list-unstyled ml-0">Email: {{ $d->email}}</li>
+                            <li class="list-unstyled ml-0">Clinic Address: {{ $d->doc_office_location}}</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
             <div class="col-md-8">
                 <h3>
@@ -35,15 +51,12 @@
                             Booking Time
                         </label>
                         <select class="form-control" name="appointment_time">
-                            <option value="09:00:00">
-                                09:00 - 10:00am
-                            </option>
-                            <option value="10:00:00">
-                                10:00 - 11:00am
-                            </option>
-                            <option value="11:00:00">
-                                11:00am - 12:00nn
-                            </option>
+                            <option disabled selected hidden>Select a time slot</option>
+                            @foreach($viewData['timeslots'] as $val => $label)
+                                <option value="{{$val}}">
+                                    {{$label}}
+                                </option>
+                            @endforeach
                         </select>
 
                     </div>

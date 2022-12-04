@@ -66,13 +66,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
-
-        var_dump($data);
-
-
-        
-
         if($data['userId']==2)
         {
         Doctor::create([
@@ -102,6 +95,17 @@ class RegisterController extends Controller
     {
         $viewData = array();
         $viewData["id"] = $id;
+        $viewData['specialties'] = array(
+            'Surgery',
+            'Internal medicine',
+            'Dermatology',
+            'Family medicine',
+            'Emergency medicine',
+            'Pediatrics',
+            'Otorhinolaryngology',
+            'Orthopedics',
+            'Neurosurgery',
+        );
 
         return view('auth.register') -> with("viewData",$viewData);
     }
@@ -110,7 +114,6 @@ class RegisterController extends Controller
     {
         $viewData = array();
         $viewData["id"] = $id;
-
 
         return view('auth.register') -> with("viewData",$viewData);
     }

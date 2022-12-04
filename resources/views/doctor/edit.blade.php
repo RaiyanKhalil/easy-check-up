@@ -1,10 +1,9 @@
 @include('layouts.header')
 
 <div class="card-body">
-                    <form method="POST" action="{{ route('doctor/' . $viewData['doctor']->id .'/update }}">
+                    <form method="POST" action="{{ route('doctor-update',$viewData['doctor']->id)}}">
                         @csrf
                         <div class="row mb-3">
-                            <h1>{{var_dump($viewData)}}</h1>
                             <label for="fname" class="col-md-4 col-form-label text-md-end">First Name</label>
 
                             <div class="col-md-6">
@@ -36,7 +35,7 @@
 
                         
                         <div class="row mb-3">
-                            <label for="contact" class="col-md-4 col-form-label text-md-end">Contact</label>
+                            <label for="contactl" class="col-md-4 col-form-label text-md-end">Contact</label>
 
                             <div class="col-md-6">
                                 <input id="contact" type="text" class="form-control " name="contact" value="{{ $viewData['doctor']->phn_num }}" required autocomplete="contact" autofocus>
@@ -75,6 +74,8 @@
                                 <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
                             </div>
 -->
+                        
+                       
                         
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">

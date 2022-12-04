@@ -32,6 +32,7 @@ class DashboardController extends Controller
     public function docDash(){
         $viewData = array();
         $viewData['user'] = Auth::user();
+        $viewData['doctor'] = Doctor::findorFail(Auth::user()->id);
 
         $appts = array();
         foreach (Appointment::all() as $a) {
@@ -45,6 +46,6 @@ class DashboardController extends Controller
 
         return view('dashboard.template')->with('viewData', $viewData);
 
-        return view('dashboard.doctor')->with('viewData', $viewData);
+        // return view('dashboard.doctor')->with('viewData', $viewData);
     }
 }

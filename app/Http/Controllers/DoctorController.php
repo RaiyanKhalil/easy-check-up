@@ -24,4 +24,22 @@ class DoctorController extends Controller
       
     }
 
+    public function  update(Request $formData, $id) {
+        $doc =  Doctor::findorFail($id);
+        $doc->fname = $formData->input('fname');
+        
+        $doc->fname = $formData->input('lname');
+
+        $doc->email = $formData->input('email');
+
+        $doc->speciality = $formData->input('speciality');
+
+        $doc->dob = $formData->input('doctor_type');
+
+        $doc->doc_office_location = $formData->input('address');
+            
+        $doc->update();
+            return redirect()->route('dashboard-doctor');
+    }
+
 }

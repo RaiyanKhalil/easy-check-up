@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Doctor;
+
+use App\Http\Controllers\LocationController;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -68,6 +70,10 @@ class RegisterController extends Controller
     {
         if($data['userId']==2)
         {
+        
+        $longLat = array();
+        $longLat = LocationController::getLongLat($data['address']);
+        var_dump($longLat);
         Doctor::create([
             'f_name' => $data['fname'],
             'l_name' => $data['lname'],
@@ -75,8 +81,8 @@ class RegisterController extends Controller
             'phn_num' => $data['contact'],
             'doc_type' => $data['doctor_type'],
             'doc_office_location' => $data['address'],
-            'doc_lat' => '',
-            'doc_long' => '',
+            'doc_lat' => $longLat[0],
+            'doc_long' => $longLat[1],
         ]);
             } 
           return User::create([
@@ -95,6 +101,8 @@ class RegisterController extends Controller
     {
         $viewData = array();
         $viewData["id"] = $id;
+
+
         $viewData['specialties'] = array(
             'Surgery',
             'Internal medicine',

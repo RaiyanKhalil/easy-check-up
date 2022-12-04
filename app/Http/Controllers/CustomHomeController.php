@@ -10,8 +10,8 @@ class CustomHomeController extends Controller
 
     public function getExternalDoctors()
     {
-
         $response = Http::get('http://192.168.0.62:1337/api/doctors');
+        // var_dump($response) ;
         $foo =  json_decode($response->body())->data;
         $docArr = array(1,2,3);
         foreach ($foo as $x => $d) { 

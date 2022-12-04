@@ -1,7 +1,6 @@
 
 @extends('layouts.header')
 @section('content')
-
 <div class="container-fluid" style="width: 70%;">
     <div class="row">
         @foreach($docData as $d)

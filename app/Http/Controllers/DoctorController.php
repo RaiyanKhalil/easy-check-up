@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Doctor;
-use Auth;
+use App\Models\User;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 
 class DoctorController extends Controller
@@ -18,28 +22,44 @@ class DoctorController extends Controller
 
         $viewData = array();
         $viewData["doctor"] = $doctor;
-        var_dump($viewData["doctor"]);
 
-        return view('doctor.show')
-        ->with('viewData',$viewData);  
+        return view('doctor.edit')->with('viewData',$viewData);  
       
     }
 
     public function  update(Request $formData, $id) {
         $doc =  Doctor::findorFail($id);
-        $doc->fname = $formData->input('fname');
+        $doc->f_name = $formData->input('fname');
         
-        $doc->fname = $formData->input('lname');
+        $doc->l_name = $formData->input('lname');
 
         $doc->email = $formData->input('email');
 
-        $doc->speciality = $formData->input('speciality');
+        $doc->phn_num = $formData->input('contact');
 
-        $doc->dob = $formData->input('doctor_type');
+        $doc->doc_type = $formData->input('doctor_type');
 
         $doc->doc_office_location = $formData->input('address');
             
         $doc->update();
+
+        
+    //    $user = (object) DB::table('users')->where('email', Auth::user()->email)->first();
+        $user = User::where('email', Auth::user()->email)->first();
+        
+
+        $user->fname = $formData->input('fname');
+        
+        $user->lname = $formData->input('lname');
+
+        $user->email = $formData->input('email');
+
+        $user->contact = $formData->input('contact');
+
+        $user->address = $formData->input('address');
+        
+        $user->update();
+
             return redirect()->route('dashboard-doctor');
     }
 

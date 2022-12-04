@@ -37,6 +37,6 @@ Route::get('/appointment/cancel/{id}', 'App\Http\Controllers\AppointmentsControl
 //DOCTORS
 Route::get('/doctor/{id}', 'App\Http\Controllers\DoctorController@showDoctor')->name('doctor-edit');
 
-Route::Post('/doctor/{id}/update', 'App\Http\Controllers\DoctorController@update')->name('doctor-update');
+Route::Post('/doctor/update/{id}', 'App\Http\Controllers\DoctorController@update')->name('doctor-update');
 
 Route::get('/doctor/{id}/delete', 'App\Http\Controllers\AppointmentsController@cancel')->name('doctor-cancel');

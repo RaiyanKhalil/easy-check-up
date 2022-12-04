@@ -9,8 +9,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
+                <div class="card-body py-4">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="row mb-3">
@@ -60,13 +59,10 @@
 
                             <div class="dropdown col-md-6">
                                 <select id="doctor_type" name="doctor_type" class="form-select" aria-label="Default select example">
-                                    <option selected>Please select a type</option>
-                                    <option value="doctor1">Doctor1</option>
-                                    <option value="doctor1">Doctor2</option>
-                                    <option value="doctor2">Doctor3</option>
-                                    <option value="doctor3">Doctor4</option>
-                                    <option value="doctor4">Doctor5</option>
-                                    <option value="doctor5">Doctor6</option>
+                                    <option value="" disabled selected hidden>Please select a type</option>
+                                    @foreach($viewData['specialties'] as $s)
+                                        <option value="{{$s}}">{{$s}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
@@ -93,15 +89,7 @@
                             </div>
                             </div>
                             @endif
-                            
-    <!--                    <div class="row justify-content-center">
-                            <div class="col-md-4">
-                                <label for="address" class="col-md-4 col-form-label text-md-end">Address</label>
-                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
-                            </div>
--->
-                        
-                       
+                                           
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
@@ -125,21 +113,9 @@
                             </div>
                         </div>
 
-      <!--                  <div class="row mb-3">
-                            <label for="user_type" class="col-md-4 col-form-label text-md-end">{{ __('User Type') }}</label>
-
-                            <div class="dropdown col-md-6">
-                                <select id="user_type" name="user_type" class="form-select" aria-label="Default select example">
-                                    <option selected>Please select a user type</option>
-                                    <option value="patient">Patient</option>
-                                    <option value="doctor">Doctor</option>
-                                </select>
-                            </div>
-                        </div> -->
-
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary mb-3">
                                     {{ __('Register') }}
                                 </button>
                             </div>

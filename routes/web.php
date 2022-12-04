@@ -20,10 +20,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\CustomHomeController@getExternalDoctors')->name('landing');
 
+
+Route::get('/home', 'App\Http\Controllers\CustomHomeController@getExternalDoctors')->name('landing');
+
 // ROUTES
 Auth::routes();
 
-//Registration Routes
+//REGISTRATION
 
 Route::get('/registration-doctor/{id}', 'App\Http\Controllers\Auth\RegisterController@showDoctorRegisterPage')->name('register-doctor');
 Route::get('/registration-user/{id}', 'App\Http\Controllers\Auth\RegisterController@showUserRegisterPage')->name('register-user');
@@ -37,3 +40,6 @@ Route::get('/appointment/delete/{id}', 'App\Http\Controllers\AppointmentsControl
 Route::get('/appointment/cancel/{id}', 'App\Http\Controllers\AppointmentsController@cancel')->name('appointment-cancel');
 
 
+//DOCTORS
+Route::get('/doctor/{id}', 'App\Http\Controllers\DoctorController@showDoctor')->name('doctor-show');
+Route::get('/doctor/{id}/delete', 'App\Http\Controllers\AppointmentsController@cancel')->name('doctor-cancel');

@@ -31,16 +31,25 @@
                         @endif --}}
 
                         
+                        
 
                     @else {{-- IF AUTHORIZED --}}
-                        @if(Auth::user()->role_type  == 'doctor')
+                        @if(Auth::user()->role_id  == 2)
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('dashboard-doctor') }}">Doctor Dashboard</a>
+                                </li>
+                                
+                                <li>
+                                    <a class="nav-link" href="{{route('doctor-show', Auth::user()->id)}}">Profile</a>
                                 </li>
                         @else
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('dashboard-patient') }}">Patient Dashboard</a>
                             </li>
+                            
+                            <li>
+                                    <a class="nav-link" href="{{route('doctor-show', Auth::user()->id)}}">Profile</a>
+                                </li>
                         @endif
                         
                         <li class="nav-item dropdown">

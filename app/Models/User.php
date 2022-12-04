@@ -20,9 +20,13 @@ class User extends Authenticatable
 
      public $timestamp=false;
     protected $fillable = [
-        'name',
+        'fname',
+        'lname',
+        'contact',
+        'address',
         'email',
         'password',
+
     ];
 
     /**

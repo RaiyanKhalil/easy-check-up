@@ -42,6 +42,14 @@ class CustomHomeController extends Controller
             $internalDoc[] = (object) $d;
         }
         $docAll=array_merge($externalDoc, $internalDoc);
+        // function cmp($a, $b)
+        // {
+        //     if ($a == $b) {
+        //         return 0;
+        //     }
+        //     return ($a->l_name < $b->l_name) ? -1 : 1;
+        // }
+        // usort($docAll, 'cmp');
 
         
         return view('welcome')->with('docData', $docAll);

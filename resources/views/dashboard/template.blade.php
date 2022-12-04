@@ -1,7 +1,6 @@
 @php
     $user = $viewData['user'];
     $isDoctor = $user->role_id == 2;
-    // $roleStr = $isDoctor ? 'doctor' : 'patient';
 @endphp
 
 @include('layouts.header')

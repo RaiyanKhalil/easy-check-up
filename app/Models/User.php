@@ -28,13 +28,13 @@ class User extends Authenticatable
         'role_id',
         'password',
         
-        'f_name',
-        'l_name',
-        'doc_type',
-        'phn_num',
-        'doc_office_location',
-        'doc_lat',
-        'doc_long'
+        // 'f_name',
+        // 'l_name',
+        // 'doc_type',
+        // 'phn_num',
+        // 'doc_office_location',
+        // 'doc_lat',
+        // 'doc_long'
 
     ];
 

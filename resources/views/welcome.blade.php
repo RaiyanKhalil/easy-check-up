@@ -1,3 +1,7 @@
+@php
+if(Auth::user()) $isDoctor = Auth::user()->role_id == 2;
+@endphp
+
 
 @extends('layouts.header')
 @section('content')
@@ -15,7 +19,9 @@
                     <p class="card-text">Number: {{ $d->phn_num}} <br> Email: {{ $d->email}} <br> Clinic Address: {{ $d->doc_office_location}}</p>
                     @if(isset($d->id))
                         @auth
-                        <a href="{{route('appointment-new', $d->id)}}" class="card-link">Book Appointment</a>    
+                            @if(!$isDoctor)
+                            <a href="{{route('appointment-new', $d->id)}}" class="card-link">Book Appointment</a>    
+                            @endif
                         @endauth
                         @guest
                         <a href="{{route('login', $d->id)}}" class="card-link">Login to book</a>    

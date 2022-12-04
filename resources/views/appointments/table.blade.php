@@ -36,11 +36,11 @@
         </td>
         @if($isDoctor)
             <td>
-                {{ $a->user_id }} 
+                {{ $a->patient->fname }} {{ $a->patient->lname }}
             </td>
         @else
             <td>
-                {{ $a->doctor->fname }}
+                Dr {{ $a->doctor->f_name }} {{ $a->doctor->l_name }}
             </td>
         @endif
         <td>

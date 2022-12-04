@@ -7,19 +7,21 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Doctor;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
     public function patientDash(){
+        if(  !Auth::user() || Auth::user()->role_id!==1) return back();
         $viewData = array();
-        // $viewData['title'] = "All Appointments";
         $viewData['user'] = Auth::user();
-        // $viewData['appointments'] = Appointment::all();
 
         $appts = array();
-        foreach (Appointment::all() as $a) {
-            $doctor = Doctor::findorFail($a->user_id);
-            $a['doctor'] = $doctor;
+
+        $myAppts = DB::table('appointments')->where('user_id', Auth::user()->id)->get();
+        foreach ($myAppts as $a) {
+            $doctor = Doctor::findorFail($a->doctor_id);
+            $a->doctor = $doctor;
             // array_push($appts,$a)
             $appts[] = $a;
         }
@@ -30,21 +32,23 @@ class DashboardController extends Controller
     }
 
     public function docDash(){
+        if( !Auth::user() ||  Auth::user()->role_id!==2) return back();
+        
         $viewData = array();
         $viewData['user'] = Auth::user();
 
+        $doc = DB::table('doctors')->where('email', Auth::user()->email)->first();
+
+        $myAppts = DB::table('appointments')->where('doctor_id', $doc->id)->get();
         $appts = array();
-        foreach (Appointment::all() as $a) {
+        foreach ($myAppts  as $a) {
             $patient = User::findorFail($a->user_id);
-            $a['patient'] = $patient;
-            // array_push($appts,$a)
+            $a->patient= $patient;
             $appts[] = $a;
         }
         $viewData['appointments'] = $appts;
 
 
         return view('dashboard.template')->with('viewData', $viewData);
-
-        return view('dashboard.doctor')->with('viewData', $viewData);
     }
 }

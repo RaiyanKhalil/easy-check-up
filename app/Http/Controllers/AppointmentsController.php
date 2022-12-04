@@ -24,11 +24,13 @@ class AppointmentsController extends Controller{
     }
 
     public function delete($id){
+        if(!Auth::user()) return redirect('/');
         Appointment::destroy($id);        
         return redirect('/dashboard');
     }
 
     public function new($id){
+        if(!Auth::user()) return redirect('/');
         $viewData = array();
 
         $viewData['user_id'] = Auth::user()->id;
@@ -60,6 +62,7 @@ class AppointmentsController extends Controller{
     }
 
     public function cancel($id){
+        if(!Auth::user()) return redirect('/');
         // $startDateTime =  $req->appointment_date .' ' .$req->appointment_time; 
         $appt = Appointment::findorFail($id);
         $appt['status_id'] = -1;

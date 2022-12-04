@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 // use Illuminiate\Http\Request;
 use Illuminate\Http\Request;
 use App\Models\Appointment;
+use App\Models\Doctor;
 use Carbon\Carbon;
 use GuzzleHttp\Promise\Utils;
 use Illuminate\Support\Facades\Auth;
@@ -14,11 +15,11 @@ use Illuminate\Support\Facades\Auth;
 
 
 class AppointmentsController extends Controller{
+
     public function listAll(){
         $renderData = array();
         $renderData['title'] = "All Appointments";
         $renderData['appointments'] = Appointment::all();
-
         return view('dashboard')->with('renderData', $renderData);
     }
 

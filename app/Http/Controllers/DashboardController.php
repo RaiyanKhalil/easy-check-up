@@ -6,6 +6,7 @@ use App\Models\Appointment;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Doctor;
 
 class DashboardController extends Controller
 {
@@ -17,7 +18,7 @@ class DashboardController extends Controller
 
         $appts = array();
         foreach (Appointment::all() as $a) {
-            $doctor = User::findorFail($a->user_id);
+            $doctor = Doctor::findorFail($a->user_id);
             $a['doctor'] = $doctor;
             // array_push($appts,$a)
             $appts[] = $a;
@@ -30,8 +31,19 @@ class DashboardController extends Controller
 
     public function docDash(){
         $viewData = array();
-        // $viewData['title'] = "All Appointments";
-        $viewData['appointments'] = Appointment::all();
+        $viewData['user'] = Auth::user();
+
+        $appts = array();
+        foreach (Appointment::all() as $a) {
+            $patient = User::findorFail($a->user_id);
+            $a['patient'] = $patient;
+            // array_push($appts,$a)
+            $appts[] = $a;
+        }
+        $viewData['appointments'] = $appts;
+
+
+        return view('dashboard.template')->with('viewData', $viewData);
 
         return view('dashboard.doctor')->with('viewData', $viewData);
     }

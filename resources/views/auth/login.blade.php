@@ -76,9 +76,16 @@
                                 @endif
                             </div>
                         </div>
+                        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                        <h5> No Account yet?</h5>
+                        <div class="row mb-2">
+                            <a type="button" class="btn btn-primary mb-2" href="{{ route('register') }}">Register as Patient</a>
+                            <a type="button" class="btn btn-primary mb-2" href="/about-dku-44">Register as Doctor</a>
+                        </div>
                     </form>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use GuzzleHttp\Promise\Utils;
 use Illuminate\Support\Facades\Auth;
 
+
 // use Illuminate\Support\Facades\Http;
 // $response = Http::get('http://192.168.0.62:1337/api/doctors');
 // $foo =  json_decode($response->body())->data[0];
@@ -36,6 +37,7 @@ class AppointmentsController extends Controller{
         $viewData['user_id'] = Auth::user()->id;
         $viewData['doctor_id'] = $id;
         $viewData['doctor'] = "";
+        $viewData['tomorrow'] = Carbon::tomorrow()->format('Y-m-d');
         
         return view('appointments.new')->with('viewData', $viewData);
     }

@@ -1,24 +1,33 @@
 
 
-<table>
+<table class="table">
     <tr>
         <th>
             ID
         </th>
+        @if ($isDoctor)
+            <th>
+                Patient
+            </th>
+        @else
+            <th>
+                Doctor
+            </th>
+        @endif
         <th>
-            Patient
+            Date
         </th>
         <th>
-            Doctor
+            Time Start
         </th>
         <th>
-            Start
-        </th>
-        <th>
-            End
+            Time End
         </th>
         <th>
             Status
+        </th>
+        <th colspan="2">
+            Actions
         </th>
     </tr>
     @foreach($appts as $a)
@@ -26,20 +35,29 @@
         <td>
             {{ $a->id }}
         </td>
+        @if($isDoctor)
+            <td>
+                {{ $a->user_id }} 
+            </td>
+        @else
+            <td>
+                {{ $a->doctor->fname }}
+            </td>
+        @endif
         <td>
-            {{ $a->user_id }}
+            {{ date_format(date_create($a->datetime_start), 'M d, Y') }}
         </td>
         <td>
-            {{ $a->doctor_id }}
+            {{ date_format(date_create($a->datetime_start), 'h:i A') }}
         </td>
         <td>
-            {{ $a->datetime_start }}
-        </td>
-        <td>
-            {{ $a->datetime_end }}
+            {{ date_format(date_create($a->datetime_end), 'h:i A') }}
         </td>
         <td>
             {{ $a->status_id}}
+        </td>
+        <td>
+            <a href={{'/appointment/delete/' . $a->id}}>Edit</a> fixme
         </td>
         <td>
             <a href={{'/appointment/delete/' . $a->id}}>Delete</a>

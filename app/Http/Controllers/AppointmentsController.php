@@ -39,7 +39,8 @@ class AppointmentsController extends Controller{
         $viewData['user_id'] = Auth::user()->id;
         $viewData['doctor_id'] = $id;
         $viewData['doctor'] = $doc;
-        $viewData['tomorrow'] = Carbon::tomorrow()->format('Y-m-d');
+        $viewData['date'] = Carbon::tomorrow()->format('Y-m-d');
+        $viewData['today'] = Carbon::today()->format('Y-m-d');
         
         return view('appointments.create')->with('viewData', $viewData);
     }
@@ -74,6 +75,23 @@ class AppointmentsController extends Controller{
         $appt['status_id'] = 2;
         $appt->save();
         return back();
+    }
+
+    public function edit($id){
+        $appt = Appointment::findorFail($id);
+        if($appt->user_id !== Auth::user()->id) return redirect(route('dashboard-patient'));
+
+        $viewData = array();
+        $viewData['appt'] = $appt;
+        $viewData['doctor_id'] = $appt->doctor_id;
+        $viewData['user_id'] = $appt->doctor_id;
+        $viewData['date'] = Carbon::parse($appt->datetime_start)->format('Y-m-d');
+        $viewData['time'] =  Carbon::parse($appt->datetime_start)->toTimeString();
+        $viewData['doctor'] = Doctor::findorFail($appt->doctor_id);
+        $viewData['today'] = Carbon::today()->format('Y-m-d');
+        
+        
+        return view('appointments.create')->with('viewData', $viewData);
     }
 
 }?>

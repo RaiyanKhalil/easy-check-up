@@ -68,7 +68,7 @@
         </td>
         <td>
             @if(!$isDoctor)
-                <a class="text-warning" href={{'/appointment/delete/' . $a->id}}>Edit</a>
+                <a class="text-warning" href={{route('appointment-edit', $a->id) }}>Edit</a>
             @else
                 @if($a->status_id == 1)
                     <a class="text-success" href={{ route('appointment-approve', $a->id)}}>Approve</a>

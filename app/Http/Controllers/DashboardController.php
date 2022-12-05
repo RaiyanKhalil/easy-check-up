@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
     public function patientDash(){
-        if(  !Auth::user() || Auth::user()->role_id!==1) return back();
+        if( !Auth::user() || Auth::user()->role_id!==1) return back();
         $viewData = array();
         $viewData['user'] = Auth::user();
 

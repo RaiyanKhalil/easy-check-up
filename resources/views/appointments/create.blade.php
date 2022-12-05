@@ -18,9 +18,13 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-xl-9 row my-5">
+        <div class="col--9 row my-5">
             <h1 class="mb-5">
-                Create new appointments
+                @if(isset($viewData['appt']))
+                    Update this appointment
+                @else
+                    Create new appointment
+                @endif
             </h1>
             <div class="col-md-4">
                 <h3>
@@ -44,7 +48,11 @@
                 <h3>
                     Set appointment details
                 </h3>
-                <form action="{{route('appointment-create')}}" method="POST">
+                @if(isset($viewData['appt']))
+                    <form action="{{route('appointment-update')}}" method="POST">
+                @else
+                    <form action="{{route('appointment-create')}}" method="POST">
+                @endif    
                     @csrf
 
                     <input type="hidden" name="user_id" value={{$viewData['user_id']}}>
@@ -55,7 +63,13 @@
                             Booking Date
                         </label>
 
-                        <input class="form-control" type="date" name="appointment_date" value="{{$viewData['tomorrow']}}"/>
+                        <input 
+                            class="form-control" 
+                            type="date" 
+                            name="appointment_date" 
+                            value="{{$viewData['today']}}"
+                            min={{now()}}
+                        />
 
                     </div>
 
@@ -66,15 +80,21 @@
                         <select class="form-control" name="appointment_time">
                             <option disabled selected hidden>Select a time slot</option>
                             @foreach($timeslots as $val => $label)
-                                <option value="{{$val}}">
+                                <option value="{{$val}}" {{$viewData['time']==$val ? 'selected': ''}}>
                                     {{$label}}
                                 </option>
                             @endforeach
                         </select>
 
                     </div>
+
+                    @if(isset($viewData['appt']))
+                        <button class="btn btn-primary" type="submit">Save Appointment</button>
+                    @else
+                        <button class="btn btn-primary" type="submit">Book Appointment</button>
+                    @endif
                 
-                    <button class="btn btn-primary" type="submit">Book Appointment</button>
+                    
                 </form>
             </div>
 

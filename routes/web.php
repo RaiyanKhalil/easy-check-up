@@ -35,6 +35,8 @@ Route::post('/user/update', 'App\Http\Controllers\DashboardController@updateUser
 
 // APPOINTMENTS
 Route::post('/appointment/create','App\Http\Controllers\AppointmentsController@create')->name('appointment-create');
+Route::get('/appointment/edit/{id}','App\Http\Controllers\AppointmentsController@edit')->name('appointment-edit');
+Route::post('/appointment/update','App\Http\Controllers\AppointmentsController@update')->name('appointment-update');
 Route::get('/appointment/new/{id}','App\Http\Controllers\AppointmentsController@new')->name('appointment-new');
 Route::get('/appointment/delete/{id}', 'App\Http\Controllers\AppointmentsController@delete')->name('appointment-delete');
 Route::get('/appointment/cancel/{id}', 'App\Http\Controllers\AppointmentsController@cancel')->name('appointment-cancel');

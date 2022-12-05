@@ -22,7 +22,7 @@
                     @endif
                 </ul>
 
-                <a href="{{route('doctor-edit',Auth::user()->id)}}" class="btn btn-primary">Edit Profile</a>
+                <a href="{{route('doctor-edit', $viewData['doctor']->id)}}" class="btn btn-primary">Edit Profile</a>
             </div>
             <div class="mb-4">
                 <h3>Your Appointments</h3>

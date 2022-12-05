@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\CustomHomeController@getSearch')->name('landing');
-Route::get('/home', 'App\Http\Controllers\CustomHomeController@getSearch');
-Route::get('/search', 'App\Http\Controllers\CustomHomeController@getSearch');
+Route::get('/', 'App\Http\Controllers\CustomHomeController@getDefaultData')->name('landing');
+Route::get('/home', 'App\Http\Controllers\CustomHomeController@getDefaultData')->name('landing');
+Route::get('/home/search', 'App\Http\Controllers\CustomHomeController@search')->name('search');
+// Route::get('/search', 'App\Http\Controllers\CustomHomeController@showEmployee')->name('search');
+
+
 
 // ROUTES
 Auth::routes();
@@ -40,6 +43,7 @@ Route::get('/appointment/approve/{id}', 'App\Http\Controllers\AppointmentsContro
 Route::get('/doctor/{id}', 'App\Http\Controllers\DoctorController@showDoctor')->name('doctor-edit');
 Route::Post('/doctor/update/{id}', 'App\Http\Controllers\DoctorController@update')->name('doctor-update');
 Route::get('/doctor/{id}/delete', 'App\Http\Controllers\AppointmentsController@cancel')->name('doctor-cancel');
+
 
 
 //LOCATION

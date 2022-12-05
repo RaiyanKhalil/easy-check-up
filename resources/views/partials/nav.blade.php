@@ -39,7 +39,6 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('dashboard-doctor') }}">Doctor Dashboard</a>
                                 </li>
-                                
                         @else
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('dashboard-patient') }}">Patient Dashboard</a>

@@ -30,6 +30,8 @@ Route::get('/registration-user/{id}', 'App\Http\Controllers\Auth\RegisterControl
 // DASHBOARDS
 Route::get('/dashboard', 'App\Http\Controllers\DashboardController@patientDash')->name('dashboard-patient');
 Route::get('/dashboard-doctor', 'App\Http\Controllers\DashboardController@docDash')->name('dashboard-doctor');
+Route::get('/user/edit/{id}', 'App\Http\Controllers\DashboardController@editUser')->name('user-edit');
+Route::post('/user/update', 'App\Http\Controllers\DashboardController@updateUser')->name('user-update');
 
 // APPOINTMENTS
 Route::post('/appointment/create','App\Http\Controllers\AppointmentsController@create')->name('appointment-create');
@@ -38,13 +40,10 @@ Route::get('/appointment/delete/{id}', 'App\Http\Controllers\AppointmentsControl
 Route::get('/appointment/cancel/{id}', 'App\Http\Controllers\AppointmentsController@cancel')->name('appointment-cancel');
 Route::get('/appointment/approve/{id}', 'App\Http\Controllers\AppointmentsController@approve')->name('appointment-approve');
 
-
 //DOCTORS
 Route::get('/doctor/{id}', 'App\Http\Controllers\DoctorController@showDoctor')->name('doctor-edit');
-Route::Post('/doctor/update/{id}', 'App\Http\Controllers\DoctorController@update')->name('doctor-update');
+Route::post('/doctor/update/{id}', 'App\Http\Controllers\DoctorController@update')->name('doctor-update');
 Route::get('/doctor/{id}/delete', 'App\Http\Controllers\AppointmentsController@cancel')->name('doctor-cancel');
-
-
 
 //LOCATION
 Route::get('/location', 'App\Http\Controllers\LocationController@getLongLat')->name('location-get');

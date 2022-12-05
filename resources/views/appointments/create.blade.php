@@ -1,11 +1,24 @@
 @php
     $d = $viewData['doctor'];
+    $timeslots = array(
+            '07:00:00' => '7:00 - 8:00 am',
+            '08:00:00' => '8:00 - 9:00 am',
+            '09:00:00' => '9:00 - 10:00 am',
+            '10:00:00' => '10:00 - 11:00 am',
+            '11:00:00' => '11:00 - 12:00 pm',
+            '12:00:00' => '12:00 - 1:00 pm',
+            '13:00:00' => '1:00 - 2:00 pm',
+            '14:00:00' => '2:00 - 3:00 pm',
+            '15:00:00' => '3:00 - 4:00 pm',
+            '16:00:00' => '4:00 - 5:00 pm',
+            '17:00:00' => '5:00 - 6:00 pm',
+        );
 @endphp
 @include('layouts.header')
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-9 row my-5">
+        <div class="col-xl-9 row my-5">
             <h1 class="mb-5">
                 Create new appointments
             </h1>
@@ -52,7 +65,7 @@
                         </label>
                         <select class="form-control" name="appointment_time">
                             <option disabled selected hidden>Select a time slot</option>
-                            @foreach($viewData['timeslots'] as $val => $label)
+                            @foreach($timeslots as $val => $label)
                                 <option value="{{$val}}">
                                     {{$label}}
                                 </option>

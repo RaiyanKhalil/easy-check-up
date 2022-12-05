@@ -80,7 +80,7 @@
                         <select class="form-control" name="appointment_time">
                             <option disabled selected hidden>Select a time slot</option>
                             @foreach($timeslots as $val => $label)
-                                <option value="{{$val}}" {{$viewData['time']==$val ? 'selected': ''}}>
+                                <option value="{{$val}}" {{ (isset($viewData['time']) && $viewData['time']==$val)  ? 'selected': ''}}>
                                     {{$label}}
                                 </option>
                             @endforeach

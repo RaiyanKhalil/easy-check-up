@@ -102,19 +102,6 @@ class RegisterController extends Controller
         $viewData = array();
         $viewData["id"] = $id;
 
-
-        $viewData['specialties'] = array(
-            'Surgery',
-            'Internal medicine',
-            'Cardiology',
-            'Family medicine',
-            'Emergency medicine',
-            'Pediatrics',
-            'Audiology',
-            'Orthopedics',
-            'Neurosurgery',
-        );
-
         return view('auth.register') -> with("viewData",$viewData);
     }
 

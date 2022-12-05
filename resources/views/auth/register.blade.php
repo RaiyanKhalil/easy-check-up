@@ -1,6 +1,17 @@
 
 @php                            
-    $idvalue =$viewData['id']   ;                   
+    $idvalue =$viewData['id'] ;                   
+    $specialties = array(
+            'Surgery',
+            'Internal medicine',
+            'Cardiology',
+            'Family medicine',
+            'Emergency medicine',
+            'Pediatrics',
+            'Audiology',
+            'Orthopedics',
+            'Neurosurgery',
+        );
 @endphp
 @extends('layouts.app')
 @section('content')
@@ -60,7 +71,7 @@
                             <div class="dropdown col-md-6">
                                 <select id="doctor_type" name="doctor_type" class="form-select" aria-label="Default select example">
                                     <option value="" disabled selected hidden>Please select a type</option>
-                                    @foreach($viewData['specialties'] as $s)
+                                    @foreach($specialties as $s)
                                         <option value="{{$s}}">{{$s}}</option>
                                     @endforeach
                                 </select>

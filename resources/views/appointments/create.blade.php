@@ -49,7 +49,7 @@
                     Set appointment details
                 </h3>
                 @if(isset($viewData['appt']))
-                    <form action="{{route('appointment-update')}}" method="POST">
+                    <form action="{{route('appointment-update', $viewData['appt']->id)}}" method="POST">
                 @else
                     <form action="{{route('appointment-create')}}" method="POST">
                 @endif    
@@ -67,8 +67,8 @@
                             class="form-control" 
                             type="date" 
                             name="appointment_date" 
-                            value="{{$viewData['today']}}"
-                            min={{now()}}
+                            value="{{$viewData['date']}}"
+                            min={{$viewData['today']}}
                         />
 
                     </div>

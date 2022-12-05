@@ -68,7 +68,9 @@
         </td>
         <td>
             @if(!$isDoctor)
+                @if($a->status_id == 1)
                 <a class="text-warning" href={{route('appointment-edit', $a->id) }}>Edit</a>
+                @endif
             @else
                 @if($a->status_id == 1)
                     <a class="text-success" href={{ route('appointment-approve', $a->id)}}>Approve</a>
@@ -79,7 +81,9 @@
         </td>
         <td>
             @if($a->status_id == 3)
-                <a class="text-danger" href={{ route('appointment-delete', $a->id)  }}>Delete</a>
+                @if(!$isDoctor)
+                    <a class="text-danger" href={{ route('appointment-delete', $a->id)  }}>Delete</a>
+                @endif
             @elseif($a->status_id == 1)
                 <a class="text-danger" href={{ route('appointment-cancel', $a->id)  }}>Cancel</a>
             @endif

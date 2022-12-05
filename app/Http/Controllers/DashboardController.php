@@ -51,4 +51,21 @@ class DashboardController extends Controller
 
         return view('dashboard.template')->with('viewData', $viewData);
     }
+
+    public function editUser($id){
+        return view('dashboard.edit-user'); 
+    }
+
+    public function updateUser(Request $req){
+
+        $user = User::findOrFail(Auth::user()->id);
+        $user->fname = $req['fname'];
+        $user->lname = $req['lname'];
+        $user->address = $req['address'];
+        $user->email = $req['email'];
+        $user->contact = $req['contact'];
+        $user->save();
+
+        return redirect('/dashboard');
+    }
 }

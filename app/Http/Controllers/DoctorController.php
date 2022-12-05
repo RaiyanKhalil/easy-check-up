@@ -29,6 +29,7 @@ class DoctorController extends Controller
 
     public function  update(Request $formData, $id) {
         $doc =  Doctor::findorFail($id);
+
         $doc->f_name = $formData->input('fname');
         
         $doc->l_name = $formData->input('lname');

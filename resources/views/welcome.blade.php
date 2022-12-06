@@ -13,6 +13,7 @@ if(Auth::user()) $isDoctor = Auth::user()->role_id == 2;
     <div id="map" style="width: 100%; height: 400px;"></div>
 
     <br>
+    
     <form action="{{ route('search') }}" method="GET">
         <input type="text" name="search" value="{{ request('search') }}" />
         <button type="submit">Search</button>
@@ -50,6 +51,13 @@ if(Auth::user()) $isDoctor = Auth::user()->role_id == 2;
 
 
 <script>
+
+
+    const v_data = {!!json_encode($users) !!}
+
+
+
+    console.log(v_data)
      var attribution = new ol.control.Attribution({
         collapsible: false
     });
@@ -73,6 +81,16 @@ if(Auth::user()) $isDoctor = Auth::user()->role_id == 2;
         })
     });
 
+    var layer2 = new ol.layer.Vector({
+     source: new ol.source.Vector({
+            features: [
+                new ol.Feature({
+                    geometry: new ol.geom.Point(ol.proj.fromLonLat([4.35247, 50.94673]))
+                })
+            ]
+        })
+    });
+    map.addLayer(layer2);
 
 
     var layer = new ol.layer.Vector({
@@ -85,6 +103,8 @@ if(Auth::user()) $isDoctor = Auth::user()->role_id == 2;
         })
     });
     map.addLayer(layer);
+    // map.addLayer(layer2);
+
 
 </script>
 @endsection

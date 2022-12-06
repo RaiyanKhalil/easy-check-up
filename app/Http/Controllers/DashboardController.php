@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
     public function patientDash(){
-        if(  !Auth::user() || Auth::user()->role_id!==1) return back();
+        if( !Auth::user() || Auth::user()->role_id!==1) return back();
         $viewData = array();
         $viewData['user'] = Auth::user();
 
@@ -22,12 +22,9 @@ class DashboardController extends Controller
         foreach ($myAppts as $a) {
             $doctor = Doctor::findorFail($a->doctor_id);
             $a->doctor = $doctor;
-            // array_push($appts,$a)
             $appts[] = $a;
         }
         $viewData['appointments'] = $appts;
-
-
         return view('dashboard.template')->with('viewData', $viewData);
     }
 
@@ -36,9 +33,12 @@ class DashboardController extends Controller
         
         $viewData = array();
         $viewData['user'] = Auth::user();
-        $viewData['doctor'] = Doctor::findorFail(Auth::user()->id);
+        // $viewData['doctor'] = Doctor::findorFail(Auth::user()->id);
 
-        $doc = DB::table('doctors')->where('email', Auth::user()->email)->first();
+        // $doc = DB::table('doctors')->where('email', Auth::user()->email)->first();
+        $doc = Doctor::query()->where('email', Auth::user()->email)->first();
+        // var_dump($doc);
+        $viewData['doctor'] = (object) $doc;
 
         $myAppts = DB::table('appointments')->where('doctor_id', $doc->id)->get();
         $appts = array();
@@ -49,7 +49,23 @@ class DashboardController extends Controller
         }
         $viewData['appointments'] = $appts;
 
-
         return view('dashboard.template')->with('viewData', $viewData);
+    }
+
+    public function editUser($id){
+        return view('dashboard.edit-user'); 
+    }
+
+    public function updateUser(Request $req){
+
+        $user = User::findOrFail(Auth::user()->id);
+        $user->fname = $req['fname'];
+        $user->lname = $req['lname'];
+        $user->address = $req['address'];
+        $user->email = $req['email'];
+        $user->contact = $req['contact'];
+        $user->save();
+
+        return redirect('/dashboard');
     }
 }

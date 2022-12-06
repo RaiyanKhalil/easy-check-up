@@ -20,10 +20,13 @@
                     @if($isDoctor)
                         @include('doctor.details', ['doctor'=>$viewData['doctor']])
                     @endif
-
                 </ul>
 
-                <a href="{{route('doctor-edit',Auth::user()->id)}}" class="btn btn-primary">Edit Profile</a>
+                @if($isDoctor)
+                    <a class="my-3 btn btn-primary" href="{{route('doctor-edit', $viewData['doctor']->id)}}" >Edit Profile</a>
+                @else
+                    <a class="my-3 btn btn-primary" href="{{route('user-edit', Auth::user()->id)}}">Edit Profile</a>
+                @endif
             </div>
             <div class="mb-4">
                 <h3>Your Appointments</h3>

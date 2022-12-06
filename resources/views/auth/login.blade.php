@@ -44,8 +44,8 @@
 
                             <div class="dropdown col-md-6">
                                 <select id="user_type" name="user_type" class="form-select" aria-label="Default select example">
-                                    <option selected>Please select a user type</option>
-                                    <option value="patient">patient</option>
+                                    <option disabled selected hidden>Please select a user type</option>
+                                    <option value="patient">Patient</option>
                                     <option value="doctor">Doctor</option>
                                 </select>
                             </div>

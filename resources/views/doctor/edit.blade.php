@@ -1,3 +1,16 @@
+@php
+   $specialties = array(
+            'Surgery',
+            'Internal medicine',
+            'Cardiology',
+            'Family medicine',
+            'Emergency medicine',
+            'Pediatrics',
+            'Audiology',
+            'Orthopedics',
+            'Neurosurgery',
+        );
+@endphp
 @include('layouts.header')
 
 <div class="card-body">
@@ -48,13 +61,14 @@
                             
                             <div class="dropdown col-md-6">
                                 <select id="doctor_type" name="doctor_type" class="form-select" aria-label="Default select example">
-                                    <option>Please select a type</option>
-                                    <option value="doctor1" {{ $viewData['doctor']->doc_type =='doctor1' ? 'selected' : '' }} >Doctor1</option>
-                                    <option value="doctor2" {{ $viewData['doctor']->doc_type =='doctor2' ? 'selected' : '' }}>Doctor2</option>
-                                    <option value="doctor3" {{ $viewData['doctor']->doc_type =='doctor3' ? 'selected' : '' }}>Doctor3</option>
-                                    <option value="doctor4" {{ $viewData['doctor']->doc_type =='doctor4' ? 'selected' : '' }}>Doctor4</option>
-                                    <option value="doctor5" {{ $viewData['doctor']->doc_type =='doctor5' ? 'selected' : '' }}>Doctor5</option>
-                                    <option value="doctor6" {{ $viewData['doctor']->doc_type =='doctor6' ? 'selected' : '' }}>Doctor6</option>
+
+                                    @foreach($specialties as $s)
+                                        <option 
+                                            value="{{$s}}"
+                                            {{ $viewData['doctor']->doc_type == $s ? 'selected' : ''}}
+                                        
+                                        >{{$s}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 

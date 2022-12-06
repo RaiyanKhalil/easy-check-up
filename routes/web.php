@@ -20,28 +20,32 @@ Route::get('/home/search', 'App\Http\Controllers\CustomHomeController@search')->
 
 
 
-
-
 // ROUTES
 Auth::routes();
 
 //REGISTRATION
-
 Route::get('/registration-doctor/{id}', 'App\Http\Controllers\Auth\RegisterController@showDoctorRegisterPage')->name('register-doctor');
 Route::get('/registration-user/{id}', 'App\Http\Controllers\Auth\RegisterController@showUserRegisterPage')->name('register-user');
 
-// APPOINTMENTS
+// DASHBOARDS
 Route::get('/dashboard', 'App\Http\Controllers\DashboardController@patientDash')->name('dashboard-patient');
 Route::get('/dashboard-doctor', 'App\Http\Controllers\DashboardController@docDash')->name('dashboard-doctor');
+Route::get('/user/edit/{id}', 'App\Http\Controllers\DashboardController@editUser')->name('user-edit');
+Route::post('/user/update', 'App\Http\Controllers\DashboardController@updateUser')->name('user-update');
+
+// APPOINTMENTS
 Route::post('/appointment/create','App\Http\Controllers\AppointmentsController@create')->name('appointment-create');
+Route::get('/appointment/edit/{id}','App\Http\Controllers\AppointmentsController@edit')->name('appointment-edit');
+Route::post('/appointment/update/{id}','App\Http\Controllers\AppointmentsController@update')->name('appointment-update');
 Route::get('/appointment/new/{id}','App\Http\Controllers\AppointmentsController@new')->name('appointment-new');
 Route::get('/appointment/delete/{id}', 'App\Http\Controllers\AppointmentsController@delete')->name('appointment-delete');
 Route::get('/appointment/cancel/{id}', 'App\Http\Controllers\AppointmentsController@cancel')->name('appointment-cancel');
-
+Route::get('/appointment/approve/{id}', 'App\Http\Controllers\AppointmentsController@approve')->name('appointment-approve');
 
 //DOCTORS
 Route::get('/doctor/{id}', 'App\Http\Controllers\DoctorController@showDoctor')->name('doctor-edit');
-
-Route::Post('/doctor/update/{id}', 'App\Http\Controllers\DoctorController@update')->name('doctor-update');
-
+Route::post('/doctor/update/{id}', 'App\Http\Controllers\DoctorController@update')->name('doctor-update');
 Route::get('/doctor/{id}/delete', 'App\Http\Controllers\AppointmentsController@cancel')->name('doctor-cancel');
+
+//LOCATION
+Route::get('/location', 'App\Http\Controllers\LocationController@getLongLat')->name('location-get');

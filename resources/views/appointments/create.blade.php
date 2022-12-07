@@ -32,13 +32,16 @@
                 </h3>
 
                 <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title text-primary mb-0">Dr. {{ $d->f_name . ' ' . $d->l_name}}</h5>
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title">Dr. {{ $d->f_name . ' ' . $d->l_name}}</h5>
+                        
                         <h6 class="card-subtitle mb-2 text-muted">MBBS in {{ $d->doc_type}}</h6>
                         <ul class="p-0">
-                            <li class="list-unstyled ml-0">Number: {{ $d->phn_num}}</li>
-                            <li class="list-unstyled ml-0">Email: {{ $d->email}}</li>
-                            <li class="list-unstyled ml-0">Clinic Address: {{ $d->doc_office_location}}</li>
+                            <li class="list-unstyled ml-0"><strong>Number:</strong> {{ $d->phn_num}}</li>
+                            <li class="list-unstyled ml-0"><strong>Email:</strong> {{ $d->email}}</li>
+                            <li class="list-unstyled ml-0"><strong>Clinic Address:</strong> {{ $d->doc_office_location}}</li>
                         </ul>
                     </div>
                 </div>

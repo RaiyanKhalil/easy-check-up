@@ -115,6 +115,7 @@ class CustomHomeController extends Controller
             $docAll = Doctor::query()
                 ->where('doc_type', 'LIKE', "%{$search}%")
                 ->orWhere('f_name', 'LIKE', "%{$search}%")
+                ->orWhere('doc_office_location', 'LIKE', "%{$search}%")
                 ->get();
         } elseif($search == '') {
             try{

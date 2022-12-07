@@ -1,8 +1,25 @@
 // Fonts
 @import url('https://fonts.bunny.net/css?family=Nunito');
+// @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap');
 
-// Variables
-@import 'variables';
 
-// Bootstrap
-@import 'bootstrap/scss/bootstrap';
+@import './solar/variables';   
+// @import '../../node_modules/bootswatch/dist/solar/variables';
+@import '../../node_modules/bootstrap/scss/bootstrap';
+@import '../../node_modules/bootswatch/dist/solar/bootswatch';
+  
+// @import './yeti/bootswatch'; 
+
+// @import 'bootstrap'; 
+
+
+.map-holder{
+    margin-top: -3rem;
+    max-height: 40vh;
+    overflow-y: hidden;
+}
+.btn-primary{
+    background-color: #015963;
+    border-color:  #015963;;
+}

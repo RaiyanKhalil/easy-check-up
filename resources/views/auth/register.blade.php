@@ -80,11 +80,42 @@
                             </div>  
                         </div>
                         <div class="row mb-3">
-                            <label for="address" class="col-md-4 col-form-label text-md-end">Clinic Address</label>
+                            <label for="addressl" class="col-md-4 col-form-label text-md-end">Street Address</label>
 
                             <div class="col-md-6">
-                                <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
+                                  <input
+                                    type="text" class="form-control"
+                                    name="street" value="{{ old('street') }}" 
+                                    placeholder="12 Some St., 9 Ave" 
+                                    required 
+                                    autocomplete="street-address" 
+                                    autofocus
+                                  >
                                 <input type="hidden" id="userId" class="form-control" name="userId" value="{{$idvalue}}">
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <label for="cityL" class="col-md-4 col-form-label text-md-end">City</label>
+
+                            <div class="col-md-6">
+                                <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}" required autocomplete="city" placeholder="Vancouver">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="provinceL" class="col-md-4 col-form-label text-md-end">Province</label>
+
+                            <div class="col-md-6">
+                                <input id="province" type="text" class="form-control" name="province" value="British Columbia" required autocomplete="province" readonly>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="zipcode" class="col-md-4 col-form-label text-md-end">Zip Code</label>
+
+                            <div class="col-md-6">
+                                <input id="zipcodel2" type="text" class="form-control" name="zipcode" value="{{ old('zipcode') }}" placeholder="V2B 13C" required autofocus>
                             </div>
                         </div>
                         @endif
@@ -92,13 +123,45 @@
                         
                         @if( $idvalue == 1 )
                         <div class="row mb-3">
-                            <label for="address" class="col-md-4 col-form-label text-md-end">Address</label>
+                            <label for="addressl" class="col-md-4 col-form-label text-md-end">Street Address</label>
 
                             <div class="col-md-6">
-                                <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
+                                  <input
+                                    type="text" class="form-control"
+                                    name="street" value="{{ old('street') }}" 
+                                    placeholder="12 Some St., 9 Ave" 
+                                    required 
+                                    autocomplete="street-address" 
+                                    autofocus
+                                  >
                                 <input type="hidden" id="userId" class="form-control" name="userId" value="{{$idvalue}}">
                             </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <label for="cityL" class="col-md-4 col-form-label text-md-end">City</label>
+
+                            <div class="col-md-6">
+                                <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}" required autocomplete="city" placeholder="Vancouver">
                             </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="provinceL" class="col-md-4 col-form-label text-md-end">Province</label>
+
+                            <div class="col-md-6">
+                                <input id="province" type="text" class="form-control" name="province" value="British Columbia" required autocomplete="province" readonly>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="zipcode" class="col-md-4 col-form-label text-md-end">Zip Code</label>
+
+                            <div class="col-md-6">
+                                <input id="zipcodel2" type="text" class="form-control" name="zipcode" value="{{ old('zipcode') }}" placeholder="V2B 13C" required autofocus>
+                            </div>
+                        </div>
+
                             @endif
                                            
 

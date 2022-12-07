@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
-  <head>
+  @include('layouts.head')
+  {{-- <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Easy Check Up - Doctor Finder</title>
@@ -13,12 +14,10 @@
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
      crossorigin=""></script>
-
-
-  </head>
+  </head> --}}
   <body>
     <div id="app">
-        @include('partials.nav')
+        @include('layouts.nav')
     </div>
-    <main class="py-4">
+    <main class="p-0">
             @yield('content')

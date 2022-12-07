@@ -28,7 +28,7 @@ class User extends Authenticatable
         'role_id',
         'password',
         
-        // 'f_name',
+         'street-address',
         // 'l_name',
         // 'doc_type',
         // 'phn_num',

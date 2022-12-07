@@ -68,19 +68,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        echo "<br/><br/><br/>";
+        var_dump($data);
+        $address = $data['street']. ', '.$data['city']. ', ' .$data['province']. ', Canada ' .$data['zipcode'];
+        
         if($data['userId']==2)
         {
-        
         $longLat = array();
-        $longLat = LocationController::getLongLat($data['address']);
-        var_dump($longLat);
+        $longLat = LocationController::getLongLat($address);
+       
         Doctor::create([
             'f_name' => $data['fname'],
             'l_name' => $data['lname'],
             'email' => $data['email'],
             'phn_num' => $data['contact'],
             'doc_type' => $data['doctor_type'],
-            'doc_office_location' => $data['address'],
+            'doc_office_location' => $address,
             'doc_lat' => $longLat[0],
             'doc_long' => $longLat[1],
         ]);
@@ -91,7 +94,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'contact' => $data['contact'],
             'role_id' => $data['userId'],
-            'address' => $data['address'],
+            'address' => $address,
             'password' => Hash::make($data['password']),
         ]);    
     

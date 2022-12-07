@@ -18,7 +18,7 @@ if(Auth::user()) $isDoctor = Auth::user()->role_id == 2;
                 <input class="form-control" type="text" name="search" value="{{ request('search') }}" />
             </div> 
             <div class="col-4 col-md-3">
-                <button class="btn btn-primary w-100" type="submit">Search</button>
+                <button class="btn btn-success w-100" type="submit">Search</button>
             </div>
             
         </div>
@@ -28,25 +28,35 @@ if(Auth::user()) $isDoctor = Auth::user()->role_id == 2;
         <div class="col-12">
             {{-- <h3 class="">Select a doctors</h3> --}}
         </div>
+
         @forelse($users as $d)
             <div class="col-md-4">
                 <div class="card mb-4" >
-                    <div class="card-body">
-                        <h5 class="card-title">Dr. {{ $d->f_name . ' ' . $d->l_name}}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">MBBS in {{ $d->doc_type}}</h6>
-                        <p class="card-text">Number: {{ $d->phn_num}} <br> Email: {{ $d->email}} <br> Clinic Address: {{ $d->doc_office_location}}</p>
-                        @if(isset($d->id))
-                        @auth
-                            @if(!$isDoctor)
-                            <a href="{{route('appointment-new', $d->id)}}" class="card-link">Book Appointment</a>    
-                            @endif
-                        @endauth
-                        @guest
-                        <a href="{{route('login', $d->id)}}" class="card-link">Login to book</a>    
-                        @endguest
-                    @endif
-                        
+                    <div class="card-header bg-transparent">
+                        <h5 class="card-title text-primary mb-0">Dr. {{ $d->f_name . ' ' . $d->l_name}}</h5>
                     </div>
+                    <div class="card-body">
+                        
+                        <h6 class="card-subtitle mb-2 text-muted">MBBS in {{ $d->doc_type}}</h6>
+
+                        <ul class="p-0">
+                            <li class="list-unstyled ml-0"><strong>Number:</strong> {{ $d->phn_num}}</li>
+                            <li class="list-unstyled ml-0"><strong>Email:</strong> {{ $d->email}}</li>
+                            <li class="list-unstyled ml-0"><strong>Clinic Address:</strong> {{ $d->doc_office_location}}</li>
+                        </ul>
+                        
+                        @if(isset($d->id))
+                        
+                            @auth
+                                @if(!$isDoctor)
+                                <a href="{{route('appointment-new', $d->id)}}" class="btn btn-primary">Book Appointment</a>    
+                                @endif
+                            @endauth
+                                @guest
+                                <a href="{{route('login', $d->id)}}" class="btn btn-warning btn-small">Login to book</a>    
+                            @endguest
+                        @endif
+                    </div>      
                 </div>
             </div>
         @empty

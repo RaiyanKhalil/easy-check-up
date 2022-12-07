@@ -19,5 +19,5 @@
     <div id="app">
         @include('layouts.nav')
     </div>
-    <main class="p-0">
+    <main class="py-5">
             @yield('content')

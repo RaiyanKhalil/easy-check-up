@@ -13,7 +13,7 @@ if(Auth::user()) $isDoctor = Auth::user()->role_id == 2;
 <div class="container">
     <form action="{{ route('search') }}" method="GET">
         <div class="row form-group my-4 gx-1 justify-content-center">
-            <strong class="text-center">Find a doctor by type</strong>
+            <strong class="text-center">Find a doctor by type, name or location</strong>
             <div class="col-8 col-md-5">
                 <input class="form-control" type="text" name="search" value="{{ request('search') }}" />
             </div> 

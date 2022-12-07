@@ -7,12 +7,17 @@ if(Auth::user()) $isDoctor = Auth::user()->role_id == 2;
 @section('content')
 
 
+
 <div class="container-fluid" style="width: 70%;">
 
 
-    <div id="map" style="width: 100%; height: 400px;"></div>
+    <div id ="map" style="width:100%; height:600px;"></div>
 
     <br>
+
+
+
+    
     <form action="{{ route('search') }}" method="GET">
         <input type="text" name="search" value="{{ request('search') }}" />
         <button type="submit">Search</button>
@@ -49,44 +54,26 @@ if(Auth::user()) $isDoctor = Auth::user()->role_id == 2;
 </div>
 
 
+
 <script>
-     var attribution = new ol.control.Attribution({
-        collapsible: false
+
+    var map = L.map('map').setView([49.2220896, -122.9677621], 13);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    const v_data = {!!json_encode($users) !!};
+    
+    v_data.forEach((element, index) => {
+        // console.log(element.f_name)
+        
+        var marker = L.marker([element.doc_lat, element.doc_long]).addTo(map);
+
     });
+ </script>
 
-    var map = new ol.Map({
-        controls: ol.control.defaults({attribution: false}).extend([attribution]),
-        layers: [
-            new ol.layer.Tile({
-                source: new ol.source.OSM({
-                    url: 'https://tile.openstreetmap.be/osmbe/{z}/{x}/{y}.png',
-                    attributions: [ ol.source.OSM.ATTRIBUTION, 'Tiles courtesy of <a href="https://geo6.be/">GEO-6</a>' ],
-                    maxZoom: 18
-                })
-            })
-        ],
-        target: 'map',
-        view: new ol.View({
-            center: ol.proj.fromLonLat([4.35247, 50.84673]),
-            maxZoom: 18,
-            zoom: 12
-        })
-    });
-
-
-
-    var layer = new ol.layer.Vector({
-     source: new ol.source.Vector({
-            features: [
-                new ol.Feature({
-                    geometry: new ol.geom.Point(ol.proj.fromLonLat([4.35247, 50.84673]))
-                })
-            ]
-        })
-    });
-    map.addLayer(layer);
-
-</script>
 @endsection
 @extends('layouts.footer')
 

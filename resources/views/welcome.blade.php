@@ -57,14 +57,15 @@ if(Auth::user()) $isDoctor = Auth::user()->role_id == 2;
 
 <script>
 
-    var map = L.map('map').setView([49.2220896, -122.9677621], 13);
+    const v_data = {!!json_encode($users) !!};
+    
+    var map = L.map('map').setView([v_data ? v_data[0].doc_lat : 49.2220896, v_data ? v_data[0].doc_long : 49.2220896], 12);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    const v_data = {!!json_encode($users) !!};
     
     v_data.forEach((element, index) => {
         // console.log(element.f_name)

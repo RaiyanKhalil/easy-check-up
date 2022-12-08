@@ -21,7 +21,7 @@ class CustomHomeController extends Controller
         $internalDoc = array();
 
         try{
-            $response = Http::get('https://1a28-70-71-37-182.ngrok.io/api/doctors/');
+            $response = Http::get('https://0c50-70-71-37-182.ngrok.io/api/doctors/');
             
             if($response->successful()){
                 $builtRes =  json_decode($response->body());
@@ -63,7 +63,7 @@ class CustomHomeController extends Controller
                 ->get();
         } elseif($search == '') {
             try{
-                $response = Http::get('https://1a28-70-71-37-182.ngrok.io/api/doctors/');
+                $response = Http::get('https://0c50-70-71-37-182.ngrok.io/api/doctors/');
                 
                 if($response->successful()){
                     $builtRes =  json_decode($response->body());

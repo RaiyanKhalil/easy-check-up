@@ -71,7 +71,7 @@ if(Auth::user()) $isDoctor = Auth::user()->role_id == 2;
 
     const v_data = {!!json_encode($users) !!};
     
-    var map = L.map('map').setView([v_data ? v_data[0].doc_lat : 49.2220896, v_data ? v_data[0].doc_long : 49.2220896], 12);
+    var map = L.map('map').setView([v_data ? v_data[0].doc_lat : 49.2819, v_data ? v_data[0].doc_long : -123.11874], 12);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -80,9 +80,7 @@ if(Auth::user()) $isDoctor = Auth::user()->role_id == 2;
 
     
     v_data.forEach((element, index) => {
-        // console.log(element.f_name)    
         var marker = L.marker([element.doc_lat, element.doc_long]).addTo(map);
-
     });
 
     

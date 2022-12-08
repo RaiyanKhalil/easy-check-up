@@ -5,10 +5,9 @@ Open the terminal from the directory and run the followig commands.
 
 ### `cd easy-check-up` 
 ### `composer install`
+### `cp .env.example .env`
 ### `php artisan migrate`
-
 Seed the premade data from easyCheckUpSeed.sql from the current directory
-
 ### `npm install`
 ### `npm run dev`
 In a seperate terminal from the same directory run the command below.
@@ -16,3 +15,8 @@ In a seperate terminal from the same directory run the command below.
 
 
 Note: The app uses a third party api service, through which we get a list of doctors. We are using **Strapi** to serve this api and **ngrok** as a reverse proxy to point to my local raspberry pi which is hosting the Strapi service. If homepage takes some time to load it means Strapi is not running and doctors list will only load from the Database. Also please have an active internet connection as we are calling some another api to get data of locations from the addresses we put in.
+
+Team Members:
+1. Name: Jenifer Macaranas ID: 300352913
+2. Name: Raiyan Khalil Shuvo ID: 300358160
+3. Name: Deepak Kumar ID: 300357444

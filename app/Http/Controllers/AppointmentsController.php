@@ -48,11 +48,7 @@ class AppointmentsController extends Controller{
     
     public function create(Request $req){
 
-        $req->validate([
-            'datetime_start' => 'required',
-            'datetime_end' => 'required',
-        ]);
-
+    
         
         $startDateTime =  $req->appointment_date .' ' .$req->appointment_time; 
         $appt = new Appointment;

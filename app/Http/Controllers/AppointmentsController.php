@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AppointmentsController extends Controller{
 
+    
     public function listAll(){
         $renderData = array();
         $renderData['title'] = "All Appointments";
@@ -46,6 +47,13 @@ class AppointmentsController extends Controller{
     }
     
     public function create(Request $req){
+
+        $req->validate([
+            'datetime_start' => 'required',
+            'datetime_end' => 'required',
+        ]);
+
+        
         $startDateTime =  $req->appointment_date .' ' .$req->appointment_time; 
         $appt = new Appointment;
         $appt['user_id'] = $req->user_id;

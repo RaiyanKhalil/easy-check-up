@@ -41,6 +41,12 @@ class DoctorController extends Controller
         $doc->doc_type = $formData->input('doctor_type');
 
         $doc->doc_office_location = $formData->input('address');
+
+        $longLat = LocationController::getLongLat($formData->input('address'));
+       //updating the location pointers too
+        $doc->doc_lat = $longLat[0];
+        $doc->doc_long= $longLat[1];
+
             
         $doc->update();
 

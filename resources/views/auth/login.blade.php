@@ -39,7 +39,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="row d-none mb-3">
                             <label for="user_type" class="col-md-4 col-form-label text-md-end">{{ __('User Type') }}</label>
 
                             <div class="dropdown col-md-6">

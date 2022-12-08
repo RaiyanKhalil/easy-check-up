@@ -68,8 +68,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        echo "<br/><br/><br/>";
-        var_dump($data);
         $address = $data['street']. ', '.$data['city']. ', ' .$data['province']. ', Canada ' .$data['zipcode'];
         
         if($data['userId']==2)

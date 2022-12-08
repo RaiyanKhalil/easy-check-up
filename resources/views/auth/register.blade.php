@@ -70,7 +70,7 @@
 
                             <div class="dropdown col-md-6">
                                 <select id="doctor_type" name="doctor_type" class="form-select" aria-label="Default select example">
-                                    <option value="" disabled selected hidden>Please select a type</option>
+                                    <option value="" disabled selected hidden>Please select a specialty</option>
                                     @foreach($specialties as $s)
                                         <option value="{{$s}}">{{$s}}</option>
                                     @endforeach

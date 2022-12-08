@@ -40,7 +40,7 @@
             {{ $a->status_id}}
         </td>
         <td>
-            <a href={{'/appointment/delete/' . $a->id}}>Delete</a>
+            <a href={{'/appointment-jma-13/delete/' . $a->id}}>Delete</a>
         </td>
     </tr>
 @endforeach

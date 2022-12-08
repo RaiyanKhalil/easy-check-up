@@ -66,6 +66,6 @@ class DashboardController extends Controller
         $user->contact = $req['contact'];
         $user->save();
 
-        return redirect('/dashboard');
+        return redirect('/dashboard-jma-13');
     }
 }

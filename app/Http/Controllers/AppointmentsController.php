@@ -29,7 +29,7 @@ class AppointmentsController extends Controller{
     public function delete($id){
         if(!Auth::user()) return redirect('/');
         Appointment::destroy($id);        
-        return redirect('/dashboard');
+        return redirect('/dashboard-jma-13');
     }
 
     public function new($id){
@@ -61,7 +61,7 @@ class AppointmentsController extends Controller{
         $appt['updated_at'] = Carbon::now();
         $appt->save();
 
-        return redirect('/dashboard');
+        return redirect('/dashboard-jma-13');
         
     }
 
@@ -111,7 +111,7 @@ class AppointmentsController extends Controller{
         $appt->updated_at = Carbon::now();
         $appt->save();
 
-        return redirect('/dashboard');
+        return redirect('/dashboard-jma-13');
         
     }
 

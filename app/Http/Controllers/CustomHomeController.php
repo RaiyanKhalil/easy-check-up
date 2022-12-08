@@ -77,7 +77,7 @@ class CustomHomeController extends Controller
         $internalDoc = array();
 
         try{
-            $response = Http::get('http://192.168.0.62:1337/api/doctors/');
+            $response = Http::get('https://9249-70-71-37-182.ngrok.io/api/doctors/');
             
             if($response->successful()){
                 $builtRes =  json_decode($response->body());
@@ -119,7 +119,7 @@ class CustomHomeController extends Controller
                 ->get();
         } elseif($search == '') {
             try{
-                $response = Http::get('http://192.168.0.62:1337/api/doctors/');
+                $response = Http::get('https://9249-70-71-37-182.ngrok.io/api/doctors/');
                 
                 if($response->successful()){
                     $builtRes =  json_decode($response->body());

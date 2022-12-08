@@ -1,7 +1,6 @@
 @php
     $d = $viewData['doctor'];
     $timeslots = array(
-            '07:00:00' => '7:00 - 8:00 am',
             '08:00:00' => '8:00 - 9:00 am',
             '09:00:00' => '9:00 - 10:00 am',
             '10:00:00' => '10:00 - 11:00 am',
@@ -80,9 +79,11 @@
                         <label>
                             Booking Time
                         </label>
-                        <select class="form-control" name="appointment_time">
-                            <option disabled selected hidden>Select a time slot</option>
+                        <select class="form-control" required name="appointment_time">
+                         <!--   <option disabled selected hidden>Select a time slot</option> -->
+                            <option selected>7:00 - 8:00 am</option>
                             @foreach($timeslots as $val => $label)
+                    
                                 <option value="{{$val}}" {{ (isset($viewData['time']) && $viewData['time']==$val)  ? 'selected': ''}}>
                                     {{$label}}
                                 </option>

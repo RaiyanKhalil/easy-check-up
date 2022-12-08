@@ -15,11 +15,14 @@
 
 
 .map-holder{
-    margin-top: -3rem;
+    margin-top: -3rem !important;
     max-height: 40vh;
     overflow-y: hidden;
 }
 .btn-primary{
     background-color: #015963;
     border-color:  #015963;;
+}
+.neg-marg {
+    margin-top: -3rem !important;
 }

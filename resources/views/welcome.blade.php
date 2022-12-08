@@ -5,9 +5,9 @@ if(Auth::user()) $isDoctor = Auth::user()->role_id == 2;
 @extends('layouts.header')
 @section('content')
 
-<div class="super-wrapper">
+<div class="super-wrapper neg-marg">
 <div class="container-fluid map-holder p-0">
-    <div id="map" class="" style="width:100%; height:600px;"></div>
+    <div id="map" class="" style="width:100%; height:40vh;"></div>
 </div>
 
 <div class="container">
@@ -56,7 +56,7 @@ if(Auth::user()) $isDoctor = Auth::user()->role_id == 2;
                                 <a href="{{route('login', $d->id)}}" class="btn btn-warning btn-small">Login to book</a>    
                             @endguest
                         @endif
-                    </div>      
+                    </div>
                 </div>
             </div>
         @empty
